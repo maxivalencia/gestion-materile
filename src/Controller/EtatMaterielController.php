@@ -64,15 +64,17 @@ class EtatMaterielController extends AbstractController
     #[Route('/{id}/expedier', name: 'app_materiel_expedition', methods: ['GET', 'POST'])]
     public function MaterielExpedition($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
+        //$materiel = new Materiel();
+        //$etat = new Etat();
         // Trouver l'entité Materiel par son ID
-        $materiel = $materielRepository->find($id);
+        $materiel = $materielRepository->findOneBy(["id" => $id]);
         
         if (!$materiel) {
             throw $this->createNotFoundException('Materiel non trouvé');
         }
 
         // Trouver l'état avec l'ID 6
-        $etat = $etatRepository->find(6);
+        $etat = $etatRepository->findOneBy(["id" => 6]);
         
         if (!$etat) {
             throw $this->createNotFoundException('Etat non trouvé');
@@ -84,6 +86,6 @@ class EtatMaterielController extends AbstractController
         $entityManager->flush();  // Sauvegarder les changements dans la base de données
 
         // Redirection après le succès de l'opération
-        return $this->redirectToRoute('app_etat_materiel', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_etat_materiel_liste', [], Response::HTTP_SEE_OTHER);
     }
 }
