@@ -16,7 +16,7 @@
                 <th>Reference</th>
                 <th>Serie</th>
                 <th>Observation</th>
-                <!-- <th>actions</th> -->
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +30,9 @@
                 <td>{{ materiel.reference }}</td>
                 <td>{{ materiel.serie }}</td>
                 <td>{{ materiel.observation }}</td>
+                <td>
+                    <a href="{{ path('app_materiel_reception', {'id': materiel.id}) }}">Recevoir</a>
+                </td>
                 <!-- <td>
                     <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>
                     <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">edit</a>

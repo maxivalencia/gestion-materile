@@ -47,20 +47,6 @@ class EtatMaterielController extends AbstractController
         ]);
     }
 
-    /* #[Route('/{id}/expedier', name: 'app_materiel_expedition', methods: ['GET', 'POST'])]
-    public function MaterielExpedition($id, Request $request, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
-    {
-        //$form = $this->createForm(MaterielType::class, $materiel);
-        //$form->handleRequest($request);
-        $materiel = $materielRepository->find($id);
-        if (!$materiel) {
-            throw $this->createNotFoundException('Materiel non trouvé');
-        }
-        $etat = $etatRepository->findOneBy(["id" => 6]);
-        $materiel->setEtat($etat);
-        return $this->redirectToRoute('app_etat_materiel', [], Response::HTTP_SEE_OTHER);
-    } */
-
     #[Route('/{id}/expedier', name: 'app_materiel_expedition', methods: ['GET', 'POST'])]
     public function MaterielExpedition($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
