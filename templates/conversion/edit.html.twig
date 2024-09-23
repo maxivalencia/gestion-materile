@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Conversion{% endblock %}
+
+{% block body %}
+    <h1>Edit Conversion</h1>
+
+    {{ include('conversion/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_conversion_index') }}">back to list</a>
+
+    {{ include('conversion/_delete_form.html.twig') }}
+{% endblock %}

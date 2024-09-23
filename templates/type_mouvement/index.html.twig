@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeMouvement index{% endblock %}
+
+{% block body %}
+    <h1>TypeMouvement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Sens</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_mouvement in type_mouvements %}
+            <tr>
+                <td>{{ type_mouvement.id }}</td>
+                <td>{{ type_mouvement.type }}</td>
+                <td>{{ type_mouvement.sens }}</td>
+                <td>
+                    <a href="{{ path('app_type_mouvement_show', {'id': type_mouvement.id}) }}">show</a>
+                    <a href="{{ path('app_type_mouvement_edit', {'id': type_mouvement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_mouvement_new') }}">Create new</a>
+{% endblock %}

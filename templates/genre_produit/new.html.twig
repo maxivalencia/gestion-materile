@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GenreProduit{% endblock %}
+
+{% block body %}
+    <h1>Create new GenreProduit</h1>
+
+    {{ include('genre_produit/_form.html.twig') }}
+
+    <a href="{{ path('app_genre_produit_index') }}">back to list</a>
+{% endblock %}

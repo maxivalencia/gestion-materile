@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materiel index{% endblock %}
+
+{% block body %}
+    <h1>Etat Materiel</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Produit</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Etat</th>
+                <th>Reference</th>
+                <th>Serie</th>
+                <th>Observation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materiel in materiels %}
+            <tr>
+                <td>{{ materiel.id }}</td>
+                <td>{{ materiel.produit }}</td>
+                <td>{{ materiel.service }}</td>
+                <td>{{ materiel.date ? materiel.date|date('d-m-Y') : '' }}</td>
+                <td>{{ materiel.etat }}</td>
+                <td>{{ materiel.reference }}</td>
+                <td>{{ materiel.serie }}</td>
+                <td>{{ materiel.observation }}</td>
+                <td>
+                    <a href="{{ path('app_materiel_expedition', {'id': materiel.id}) }}">Expédier</a>
+                </td>
+                <!-- <td>
+                    <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>
+                    <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">edit</a>
+                </td> -->
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- <a href="{{ path('app_materiel_new') }}">Create new</a> -->
+{% endblock %}
