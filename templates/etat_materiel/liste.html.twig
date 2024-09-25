@@ -32,6 +32,9 @@
                 <td>{{ materiel.observation }}</td>
                 <td>
                     <a href="{{ path('app_materiel_expedition', {'id': materiel.id}) }}">Expédier</a>
+                    <a href="{{ path('app_materiel_panne', {'id': materiel.id}) }}">En panne</a>
+                    <a href="{{ path('app_materiel_stock', {'id': materiel.id}) }}">En stock</a>
+                    <a href="{{ path('app_materiel_reparation', {'id': materiel.id}) }}">En réparation</a>
                 </td>
                 <!-- <td>
                     <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>
