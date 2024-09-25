@@ -45,4 +45,19 @@ class MaterielRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    /**
+     * @return Materiel[] Returns an array of Materiel objects
+     */
+    public function findByMaterielEnPossession(array $value): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.etat NOT IN (:val)')
+            ->setParameter('val', $value)
+            ->orderBy('m.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

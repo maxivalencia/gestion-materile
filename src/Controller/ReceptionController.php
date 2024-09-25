@@ -63,7 +63,7 @@ class ReceptionController extends AbstractController
         }
 
         // Trouver l'état avec l'ID 6
-        $etat = $etatRepository->findOneBy(["id" => 2]);
+        $etat = $etatRepository->findOneBy(["id" => 1]);
         
         if (!$etat) {
             throw $this->createNotFoundException('Etat non trouvé');

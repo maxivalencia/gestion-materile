@@ -41,8 +41,11 @@ class EtatMaterielController extends AbstractController
     {
         // vardump($this->getUser());
         $service = $this->getUser()->getService();
+        //$materiel = $materielRepository->findBy(["service" => $service]);
+        $ne_pas_en_possession = [5, 6];
+        $materiel = $materielRepository->findByMaterielEnPossession($ne_pas_en_possession);
         return $this->render('etat_materiel/liste.html.twig', [
-            'materiels' => $materielRepository->findBy(["service" => $service]),
+            'materiels' => $materiel,
             //'materiels' => $materielRepository->findAll(),
         ]);
     }
