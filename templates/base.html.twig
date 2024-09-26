@@ -57,109 +57,113 @@
             <div class="sidebar">
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item" class="background-color:#0000FF;">
-                        <a href="#" class="nav-link">
-                            <p>Gestion de stock et de matériel</p>
-                        </a>
-                    </li>
-                    <hr>
-                    <li class="nav-item">
-                        <a href="{{ path('app_etat_materiel_liste') }}" class="nav-link">
-                            <p>Etat Materiel</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_expedition_liste') }}" class="nav-link">
-                            <p>Expedition</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_reception_liste') }}" class="nav-link">
-                            <p>Reception</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <p>Commande</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <p>Ajout</p>
-                        </a>
-                    </li>
-                    <hr>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <p>Donnée de base</p>
-                        </a>
-                    </li>
-                    <hr>
-                    <li class="nav-item">
-                        <a href="{{ path('app_conversion_index') }}" class="nav-link">
-                            <p>Conversion</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_etat_index') }}" class="nav-link">
-                            <p>Etat</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_fournisseur_index') }}" class="nav-link">
-                            <p>Fournisseur</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_genre_produit_index') }}" class="nav-link">
-                            <p>Genre produit</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_materiel_index') }}" class="nav-link">
-                            <p>Materiel</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_mouvement_index') }}" class="nav-link">
-                            <p>Mouvement</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_produit_index') }}" class="nav-link">
-                            <p>Produit</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_service_index') }}" class="nav-link">
-                            <p>Service</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_stock_index') }}" class="nav-link">
-                            <p>Stock</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_type_mouvement_index') }}" class="nav-link">
-                            <p>Type mouvement</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_type_produit_index') }}" class="nav-link">
-                            <p>Type Produit</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_unite_index') }}" class="nav-link">
-                            <p>Unite</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_user_index') }}" class="nav-link">
-                            <p>Utilisateur</p>
-                        </a>
-                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item" class="background-color:#0000FF;">
+                            <a href="#" class="nav-link">
+                                <p>Gestion de stock et de matériel</p>
+                            </a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a href="{{ path('app_etat_materiel_liste') }}" class="nav-link">
+                                <p>Etat Materiel</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_expedition_liste') }}" class="nav-link">
+                                <p>Expedition</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_reception_liste') }}" class="nav-link">
+                                <p>Reception</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <p>Commande</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <p>Ajout</p>
+                            </a>
+                        </li>
+                        <hr>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <p>Donnée de base</p>
+                            </a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a href="{{ path('app_conversion_index') }}" class="nav-link">
+                                <p>Conversion</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_etat_index') }}" class="nav-link">
+                                <p>Etat</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_fournisseur_index') }}" class="nav-link">
+                                <p>Fournisseur</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_genre_produit_index') }}" class="nav-link">
+                                <p>Genre produit</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_materiel_index') }}" class="nav-link">
+                                <p>Materiel</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_mouvement_index') }}" class="nav-link">
+                                <p>Mouvement</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_produit_index') }}" class="nav-link">
+                                <p>Produit</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_service_index') }}" class="nav-link">
+                                <p>Service</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_stock_index') }}" class="nav-link">
+                                <p>Stock</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_type_mouvement_index') }}" class="nav-link">
+                                <p>Type mouvement</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_type_produit_index') }}" class="nav-link">
+                                <p>Type Produit</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_unite_index') }}" class="nav-link">
+                                <p>Unite</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_user_index') }}" class="nav-link">
+                                <p>Utilisateur</p>
+                            </a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
             </div>
