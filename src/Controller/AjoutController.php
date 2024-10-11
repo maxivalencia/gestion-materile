@@ -37,10 +37,10 @@ class AjoutController extends AbstractController
             $entityManager->persist($materiel);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('materiel_service', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('materiel/new.html.twig', [
+        return $this->renderForm('ajout/index.html.twig', [
             'materiel' => $materiel,
             'form' => $form,
         ]);

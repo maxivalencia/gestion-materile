@@ -3,9 +3,9 @@
 {% block title %}Commande Materiel{% endblock %}
 
 {% block body %}
-    <h1>Nouveau commande materiel</h1>
+    <h1>Nouveau Commande Materiel</h1>
 
     {{ include('materiel/_form.html.twig') }}
 
-    <a href="{{ path('app_materiel_index') }}">Retour</a>
+    <a href="{{ path('app_materiel_index') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
 {% endblock %}
