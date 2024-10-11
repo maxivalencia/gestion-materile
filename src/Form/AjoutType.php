@@ -12,14 +12,14 @@ class AjoutType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date')
+            //->add('date')
             ->add('reference')
             ->add('serie')
             ->add('observation')
             ->add('produit')
-            ->add('service')
+            //->add('service')
             ->add('etat')
-            ->add('user')
+            //->add('user')
         ;
     }
 

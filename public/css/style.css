@@ -234,3 +234,10 @@
     height: 40px !important;
     border-color: #ced4da !important;
 }
+
+.kl-bouton {
+    width: 200px;
+    height: 40px;
+    margin : 5px;
+    padding: 5px;
+}
