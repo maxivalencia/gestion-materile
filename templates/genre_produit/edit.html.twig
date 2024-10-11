@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit GenreProduit{% endblock %}
+{% block title %}Edition Genre de Produit{% endblock %}
 
 {% block body %}
-    <h1>Edit GenreProduit</h1>
+    <h1>Edition Genre de Produit</h1>
 
-    {{ include('genre_produit/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('genre_produit/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_genre_produit_index') }}">back to list</a>
+    <a href="{{ path('app_genre_produit_index') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
 
     {{ include('genre_produit/_delete_form.html.twig') }}
 {% endblock %}
