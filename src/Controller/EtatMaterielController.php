@@ -50,6 +50,34 @@ class EtatMaterielController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/marche', name: 'app_materiel_marche', methods: ['GET', 'POST'])]
+    public function MaterielMarche($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
+    {
+        //$materiel = new Materiel();
+        //$etat = new Etat();
+        // Trouver l'entité Materiel par son ID
+        $materiel = $materielRepository->findOneBy(["id" => $id]);
+        
+        if (!$materiel) {
+            throw $this->createNotFoundException('Materiel non trouvé');
+        }
+
+        // Trouver l'état avec l'ID 6
+        $etat = $etatRepository->findOneBy(["id" => 2]);
+        
+        if (!$etat) {
+            throw $this->createNotFoundException('Etat non trouvé');
+        }
+
+        // Changer l'état du materiel et sauvegarder dans la base de données
+        $materiel->setEtat($etat);
+        $entityManager->persist($materiel);  // Il faut persister les changements
+        $entityManager->flush();  // Sauvegarder les changements dans la base de données
+
+        // Redirection après le succès de l'opération
+        return $this->redirectToRoute('app_etat_materiel_liste', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/{id}/expedier', name: 'app_materiel_expedition', methods: ['GET', 'POST'])]
     public function MaterielExpedition($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
