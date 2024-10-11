@@ -19,8 +19,8 @@
                 <td>{{ etat.id }}</td>
                 <td>{{ etat.etat }}</td>
                 <td>
-                    <a href="{{ path('app_etat_show', {'id': etat.id}) }}">show</a>
-                    <a href="{{ path('app_etat_edit', {'id': etat.id}) }}">edit</a>
+                    <a href="{{ path('app_etat_show', {'id': etat.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
+                    <a href="{{ path('app_etat_edit', {'id': etat.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_etat_new') }}">Create new</a>
+    <a href="{{ path('app_etat_new') }}" class="btn btn-primary kl-bouton"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
 {% endblock %}

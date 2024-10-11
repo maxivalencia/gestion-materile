@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_conversion_index') }}">back to list</a>
-
-    <a href="{{ path('app_conversion_edit', {'id': conversion.id}) }}">edit</a>
-
+    <a href="{{ path('app_conversion_index') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
+    <br>
+    <a href="{{ path('app_conversion_edit', {'id': conversion.id}) }}" class="btn btn-success kl-bouton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</a>
+    <br>
     {{ include('conversion/_delete_form.html.twig') }}
 {% endblock %}

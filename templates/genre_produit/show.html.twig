@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}GenreProduit{% endblock %}
+{% block title %}Genre de Produit{% endblock %}
 
 {% block body %}
-    <h1>GenreProduit</h1>
+    <h1>Genre de Produit</h1>
 
     <table class="table">
         <tbody>
@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_genre_produit_index') }}">back to list</a>
-
-    <a href="{{ path('app_genre_produit_edit', {'id': genre_produit.id}) }}">edit</a>
-
+    <a href="{{ path('app_genre_produit_index') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
+    <br>
+    <a href="{{ path('app_genre_produit_edit', {'id': genre_produit.id}) }}" class="btn btn-success kl-bouton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</a>
+    <br>
     {{ include('genre_produit/_delete_form.html.twig') }}
 {% endblock %}

@@ -29,8 +29,8 @@
                 <td>{{ mouvement.finSerie }}</td>
                 <td>{{ mouvement.observation }}</td>
                 <td>
-                    <a href="{{ path('app_mouvement_show', {'id': mouvement.id}) }}">show</a>
-                    <a href="{{ path('app_mouvement_edit', {'id': mouvement.id}) }}">edit</a>
+                    <a href="{{ path('app_mouvement_show', {'id': mouvement.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
+                    <a href="{{ path('app_mouvement_edit', {'id': mouvement.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_mouvement_new') }}">Create new</a>
+    <a href="{{ path('app_mouvement_new') }}" class="btn btn-primary kl-bouton"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
 {% endblock %}

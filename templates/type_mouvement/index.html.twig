@@ -21,8 +21,8 @@
                 <td>{{ type_mouvement.type }}</td>
                 <td>{{ type_mouvement.sens }}</td>
                 <td>
-                    <a href="{{ path('app_type_mouvement_show', {'id': type_mouvement.id}) }}">show</a>
-                    <a href="{{ path('app_type_mouvement_edit', {'id': type_mouvement.id}) }}">edit</a>
+                    <a href="{{ path('app_type_mouvement_show', {'id': type_mouvement.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
+                    <a href="{{ path('app_type_mouvement_edit', {'id': type_mouvement.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_type_mouvement_new') }}">Create new</a>
+    <a href="{{ path('app_type_mouvement_new') }}" class="btn btn-primary kl-bouton"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
 {% endblock %}

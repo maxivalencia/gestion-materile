@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Mouvement{% endblock %}
+{% block title %}Nouveau Mouvement{% endblock %}
 
 {% block body %}
-    <h1>Create new Mouvement</h1>
+    <h1>Création Nouveau Mouvement</h1>
 
     {{ include('mouvement/_form.html.twig') }}
 
-    <a href="{{ path('app_mouvement_index') }}">back to list</a>
+    <a href="{{ path('app_mouvement_index') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
 {% endblock %}

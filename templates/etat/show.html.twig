@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_etat_index') }}">back to list</a>
-
-    <a href="{{ path('app_etat_edit', {'id': etat.id}) }}">edit</a>
-
+    <a href="{{ path('app_etat_index') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
+    <br>
+    <a href="{{ path('app_etat_edit', {'id': etat.id}) }}" class="btn btn-success kl-bouton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</a>
+    <br>
     {{ include('etat/_delete_form.html.twig') }}
 {% endblock %}
