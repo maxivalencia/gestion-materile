@@ -31,10 +31,10 @@
                 <td>{{ materiel.serie }}</td>
                 <td>{{ materiel.observation }}</td>
                 <td>
-                    <a href="{{ path('app_materiel_expedition', {'id': materiel.id}) }}" class="btn btn-success">Expédier</a>
-                    <a href="{{ path('app_materiel_panne', {'id': materiel.id}) }}" class="btn btn-success">En panne</a>
-                    <a href="{{ path('app_materiel_stock', {'id': materiel.id}) }}" class="btn btn-success">En stock</a>
-                    <a href="{{ path('app_materiel_reparation', {'id': materiel.id}) }}" class="btn btn-success">En réparation</a>
+                    <a href="{{ path('app_materiel_expedition', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">Expédier</a><br>
+                    <a href="{{ path('app_materiel_panne', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En panne</a><br>
+                    <a href="{{ path('app_materiel_stock', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En stock</a><br>
+                    <a href="{{ path('app_materiel_reparation', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En réparation</a>
                 </td>
                 <!-- <td>
                     <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>
