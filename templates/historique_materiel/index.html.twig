@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Historiques des Materiels{% endblock %}
+
+{% block body %}
+    <h1>Liste des Historiques des Materiels</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Objet</th>
+                <th>Sujet</th>
+                <th>Date</th>
+                <th>Ancien</th>
+                <th>Nouveau</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for historique_materiel in historique_materiels %}
+            <tr>
+                <td>{{ historique_materiel.id }}</td>
+                <td>{{ historique_materiel.objet }}</td>
+                <td>{{ historique_materiel.sujet }}</td>
+                <td>{{ historique_materiel.date ? historique_materiel.date|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ historique_materiel.ancien }}</td>
+                <td>{{ historique_materiel.nouveau }}</td>
+                <td>
+                    <a href="{{ path('app_historique_materiel_show', {'id': historique_materiel.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
+                    <a href="{{ path('app_historique_materiel_edit', {'id': historique_materiel.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_historique_materiel_new') }}" class="btn btn-primary kl-bouton"><i class="fa fa-plus" aria-hidden="true"></i> Ajouter</a>
+{% endblock %}

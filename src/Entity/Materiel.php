@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MaterielRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Etat;
@@ -38,6 +40,14 @@ class Materiel
 
     #[ORM\Column(length: 255)]
     private ?string $observation = null;
+
+    #[ORM\OneToMany(targetEntity: HistoriqueMateriel::class, mappedBy: 'materiel')]
+    private Collection $historiqueMateriels;
+
+    public function __construct()
+    {
+        $this->historiqueMateriels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -147,5 +157,35 @@ class Materiel
     public function __toString(): string
     {
         return $this->getReference();
+    }
+
+    /**
+     * @return Collection<int, HistoriqueMateriel>
+     */
+    public function getHistoriqueMateriels(): Collection
+    {
+        return $this->historiqueMateriels;
+    }
+
+    public function addHistoriqueMateriel(HistoriqueMateriel $historiqueMateriel): static
+    {
+        if (!$this->historiqueMateriels->contains($historiqueMateriel)) {
+            $this->historiqueMateriels->add($historiqueMateriel);
+            $historiqueMateriel->setMateriel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistoriqueMateriel(HistoriqueMateriel $historiqueMateriel): static
+    {
+        if ($this->historiqueMateriels->removeElement($historiqueMateriel)) {
+            // set the owning side to null (unless already changed)
+            if ($historiqueMateriel->getMateriel() === $this) {
+                $historiqueMateriel->setMateriel(null);
+            }
+        }
+
+        return $this;
     }
 }

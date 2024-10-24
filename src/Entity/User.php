@@ -46,9 +46,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Materiel::class, mappedBy: 'user')]
     private Collection $materiels;
 
+    #[ORM\OneToMany(targetEntity: HistoriqueMateriel::class, mappedBy: 'user')]
+    private Collection $historiqueMateriels;
+
     public function __construct()
     {
         $this->materiels = new ArrayCollection();
+        $this->historiqueMateriels = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -206,5 +210,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString(): string
     {
         return $this->getNom().' '.$this->getService();
+    }
+
+    /**
+     * @return Collection<int, HistoriqueMateriel>
+     */
+    public function getHistoriqueMateriels(): Collection
+    {
+        return $this->historiqueMateriels;
+    }
+
+    public function addHistoriqueMateriel(HistoriqueMateriel $historiqueMateriel): static
+    {
+        if (!$this->historiqueMateriels->contains($historiqueMateriel)) {
+            $this->historiqueMateriels->add($historiqueMateriel);
+            $historiqueMateriel->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHistoriqueMateriel(HistoriqueMateriel $historiqueMateriel): static
+    {
+        if ($this->historiqueMateriels->removeElement($historiqueMateriel)) {
+            // set the owning side to null (unless already changed)
+            if ($historiqueMateriel->getUser() === $this) {
+                $historiqueMateriel->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

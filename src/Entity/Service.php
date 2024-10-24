@@ -36,11 +36,15 @@ class Service
     #[ORM\OneToMany(targetEntity: Mouvement::class, mappedBy: 'service')]
     private Collection $mouvements;
 
+    #[ORM\OneToMany(targetEntity: TypeProduit::class, mappedBy: 'service')]
+    private Collection $typeProduits;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->materiels = new ArrayCollection();
         $this->mouvements = new ArrayCollection();
+        $this->typeProduits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -193,5 +197,35 @@ class Service
     public function __toString(): string
     {
         return $this->getSigle();
+    }
+
+    /**
+     * @return Collection<int, TypeProduit>
+     */
+    public function getTypeProduits(): Collection
+    {
+        return $this->typeProduits;
+    }
+
+    public function addTypeProduit(TypeProduit $typeProduit): static
+    {
+        if (!$this->typeProduits->contains($typeProduit)) {
+            $this->typeProduits->add($typeProduit);
+            $typeProduit->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTypeProduit(TypeProduit $typeProduit): static
+    {
+        if ($this->typeProduits->removeElement($typeProduit)) {
+            // set the owning side to null (unless already changed)
+            if ($typeProduit->getService() === $this) {
+                $typeProduit->setService(null);
+            }
+        }
+
+        return $this;
     }
 }

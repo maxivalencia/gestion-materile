@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Historique des Materiels{% endblock %}
+
+{% block body %}
+    <h1>Création Nouveau Historique des Materiels</h1>
+
+    {{ include('historique_materiel/_form.html.twig') }}
+
+    <a href="{{ path('app_historique_materiel_index') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
+{% endblock %}

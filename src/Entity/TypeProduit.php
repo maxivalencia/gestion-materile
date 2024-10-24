@@ -21,6 +21,9 @@ class TypeProduit
     #[ORM\OneToMany(targetEntity: Produit::class, mappedBy: 'type')]
     private Collection $produits;
 
+    #[ORM\ManyToOne(inversedBy: 'typeProduits')]
+    private ?Service $service = null;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -80,5 +83,17 @@ class TypeProduit
     public function __toString(): string
     {
         return $this->getType();
+    }
+
+    public function getService(): ?Service
+    {
+        return $this->service;
+    }
+
+    public function setService(?Service $service): static
+    {
+        $this->service = $service;
+
+        return $this;
     }
 }
