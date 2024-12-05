@@ -19,6 +19,10 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 7200 # Durée de vie en secondes
+                path: /
             lazy: true
             provider: app_user_provider
             form_login:

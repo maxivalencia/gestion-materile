@@ -11,6 +11,8 @@ framework:
         cookie_secure: auto
         cookie_samesite: lax
         storage_factory_id: session.storage.factory.native
+        cookie_lifetime: 7200 # Durée de vie du cookie (en secondes, ici 2 heure)
+        gc_maxlifetime: 7200 # Temps maximal avant suppression de la session (par défaut, 1J20 minutes)
 
     #esi: true
     #fragments: true

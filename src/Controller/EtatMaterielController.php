@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Materiel;
 use App\Entity\Etat;
+use App\Entity\HistoriqueMateriel;
 use App\Form\MaterielType;
 use App\Form\EtatMaterielType;
 use App\Repository\MaterielRepository;
@@ -37,15 +38,27 @@ class EtatMaterielController extends AbstractController
     }
 
     #[Route('/etat/materiel/liste', name: 'app_etat_materiel_liste')]
-    public function liste(MaterielRepository $materielRepository): Response
+    public function liste(Request $request, MaterielRepository $materielRepository, EtatRepository $etatRepository, EntityManagerInterface $entityManager): Response
     {
         // vardump($this->getUser());
-        $service = $this->getUser()->getService();
+        //$service = $this->getUser()->getService();
         //$materiel = $materielRepository->findBy(["service" => $service]);
+        $etat_id = $request->request->get('etat_id');
+        $materiel_id = $request->request->get('materiel_id');
+        if ($etat_id) {
+            // Changer l'état du materiel et sauvegarder dans la base de données
+            $mat = $materielRepository->findOneBy(['id' => $materiel_id]);
+            $etat = $etatRepository->findOneBy(['id' => $etat_id]);
+            $mat->setEtat($etat);
+            $entityManager->persist($mat);  // Il faut persister les changements
+            $entityManager->flush();  // Sauvegarder les changements dans la base de données
+        }
+        $etats = $etatRepository->findAll();
         $ne_pas_en_possession = [5, 6];
         $materiel = $materielRepository->findByMaterielEnPossession($ne_pas_en_possession);
         return $this->render('etat_materiel/liste.html.twig', [
             'materiels' => $materiel,
+            'etats' => $etats,
             //'materiels' => $materielRepository->findAll(),
         ]);
     }
@@ -56,15 +69,16 @@ class EtatMaterielController extends AbstractController
         //$materiel = new Materiel();
         //$etat = new Etat();
         // Trouver l'entité Materiel par son ID
+        $historique_materiel = new HistoriqueMateriel();
         $materiel = $materielRepository->findOneBy(["id" => $id]);
-        
+
         if (!$materiel) {
             throw $this->createNotFoundException('Materiel non trouvé');
         }
 
         // Trouver l'état avec l'ID 6
         $etat = $etatRepository->findOneBy(["id" => 2]);
-        
+
         if (!$etat) {
             throw $this->createNotFoundException('Etat non trouvé');
         }
@@ -85,14 +99,14 @@ class EtatMaterielController extends AbstractController
         //$etat = new Etat();
         // Trouver l'entité Materiel par son ID
         $materiel = $materielRepository->findOneBy(["id" => $id]);
-        
+
         if (!$materiel) {
             throw $this->createNotFoundException('Materiel non trouvé');
         }
 
         // Trouver l'état avec l'ID 6
         $etat = $etatRepository->findOneBy(["id" => 6]);
-        
+
         if (!$etat) {
             throw $this->createNotFoundException('Etat non trouvé');
         }

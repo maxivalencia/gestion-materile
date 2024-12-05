@@ -31,11 +31,20 @@
                 <td>{{ materiel.serie }}</td>
                 <td>{{ materiel.observation }}</td>
                 <td>
-                    <a href="{{ path('app_materiel_marche', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En marche</a><br>
+                    <form action="{{ path('app_etat_materiel_liste') }}" method="POST">
+                        <input type="hidden" value="{{ materiel.id }}" name="materiel_id" id="materiel_id">
+                        <select name="etat_id" id="etat_id">
+                            {% for etat in etats %}
+                                <option value="{{ etat.id }}" {% if etat.id == materiel.etat.id %}selected="selected"{% endif %}>{{ etat.etat }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-success">Valider</button>
+                    </form>
+                    <!-- <a href="{{ path('app_materiel_marche', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En marche</a><br>
                     <a href="{{ path('app_materiel_expedition', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">Expédier</a><br>
                     <a href="{{ path('app_materiel_panne', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En panne</a><br>
                     <a href="{{ path('app_materiel_stock', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En stock</a><br>
-                    <a href="{{ path('app_materiel_reparation', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En réparation</a>
+                    <a href="{{ path('app_materiel_reparation', {'id': materiel.id}) }}" class="btn btn-success kl-bouton">En réparation</a> -->
                 </td>
                 <!-- <td>
                     <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>
