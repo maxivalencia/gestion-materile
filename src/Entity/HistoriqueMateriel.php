@@ -123,4 +123,13 @@ class HistoriqueMateriel
 
         return $this;
     }
+
+    /*
+    * tostring
+    * @return string
+    */
+    public function __toString(): string
+    {
+        return $this->getObjet();
+    }
 }
