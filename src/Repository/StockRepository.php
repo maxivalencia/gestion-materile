@@ -45,4 +45,19 @@ class StockRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    /**
+     * @return Materiel[] Returns an array of Materiel objects
+     */
+    public function findByStockEnPossession(int $service_id): array
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.service = :val1')
+            ->setParameter('val1', $service_id)
+            ->orderBy('s.id', 'ASC')
+            //->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

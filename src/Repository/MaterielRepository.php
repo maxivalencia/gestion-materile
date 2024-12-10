@@ -49,13 +49,14 @@ class MaterielRepository extends ServiceEntityRepository
     /**
      * @return Materiel[] Returns an array of Materiel objects
      */
-    public function findByMaterielEnPossession(array $value): array
+    public function findByMaterielEnPossession(array $value, int $service_id): array
     {
         return $this->createQueryBuilder('m')
-            ->andWhere('m.etat NOT IN (:val)')
-            ->setParameter('val', $value)
+            ->andWhere('m.etat NOT IN (:val1) AND m.service = :val2')
+            ->setParameter('val1', $value)
+            ->setParameter('val2', $service_id)
             ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
+            //->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;

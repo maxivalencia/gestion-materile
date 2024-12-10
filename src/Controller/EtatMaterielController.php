@@ -55,9 +55,9 @@ class EtatMaterielController extends AbstractController
         }
         $etats = $etatRepository->findAll();
         $ne_pas_en_possession = [5, 6];
-        $materiel = $materielRepository->findByMaterielEnPossession($ne_pas_en_possession);
+        $materiels = $materielRepository->findByMaterielEnPossession($ne_pas_en_possession, $this->getUser()->getService()->getId());
         return $this->render('etat_materiel/liste.html.twig', [
-            'materiels' => $materiel,
+            'materiels' => $materiels,
             'etats' => $etats,
             //'materiels' => $materielRepository->findAll(),
         ]);
