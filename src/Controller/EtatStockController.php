@@ -25,8 +25,9 @@ class EtatStockController extends AbstractController
     #[Route('/etat/stock/liste', name: 'app_etat_stock_liste')]
     public function liste(Request $request, StockRepository $stockRepository, EtatRepository $etatRepository, EntityManagerInterface $entityManager): Response
     {
-        $stocks = $stockRepository->findByStockEnPossession($this->getUser()->getService()->getId());
-        return $this->render('stock/liste.html.twig', [
+        //$stocks = $stockRepository->findByStockEnPossession($this->getUser()->getService()->getId());
+        $stocks = $stockRepository->findBy(["service" => $this->getUser()->getService()]);
+        return $this->render('etat_stock/liste.html.twig', [
             'stocks' => $stocks,
         ]);
     }
