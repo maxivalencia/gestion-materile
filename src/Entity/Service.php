@@ -39,12 +39,16 @@ class Service
     #[ORM\OneToMany(targetEntity: TypeProduit::class, mappedBy: 'service')]
     private Collection $typeProduits;
 
+    #[ORM\OneToMany(targetEntity: Stock::class, mappedBy: 'service')]
+    private Collection $stocks;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->materiels = new ArrayCollection();
         $this->mouvements = new ArrayCollection();
         $this->typeProduits = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -223,6 +227,36 @@ class Service
             // set the owning side to null (unless already changed)
             if ($typeProduit->getService() === $this) {
                 $typeProduit->setService(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stock>
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): static
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks->add($stock);
+            $stock->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): static
+    {
+        if ($this->stocks->removeElement($stock)) {
+            // set the owning side to null (unless already changed)
+            if ($stock->getService() === $this) {
+                $stock->setService(null);
             }
         }
 

@@ -26,6 +26,9 @@ class Stock
     #[ORM\ManyToOne(inversedBy: 'stocks')]
     private ?Unite $unite = null;
 
+    #[ORM\ManyToOne(inversedBy: 'stocks')]
+    private ?Service $service = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,5 +89,17 @@ class Stock
     public function __toString(): string
     {
         return $this->getQuantite();
+    }
+
+    public function getService(): ?Service
+    {
+        return $this->service;
+    }
+
+    public function setService(?Service $service): static
+    {
+        $this->service = $service;
+
+        return $this;
     }
 }
