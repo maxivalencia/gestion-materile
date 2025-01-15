@@ -69,6 +69,12 @@
     -moz-opacity:1;
 }
 
+.entete_login_center {
+    margin : 0px;
+    padding : auto;
+    text-align : center;
+}
+
 .login_center{
     margin: 0;
     width: 500px;

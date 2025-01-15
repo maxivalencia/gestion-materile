@@ -61,6 +61,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item" class="background-color:#0000FF;">
+                            <img src="/image/banniere_dgsr.png" class="img-fluid" alt="Image en-tête de la DGSR">
                             <a href="#" class="nav-link">
                                 <p>Gestion de matériel</p>
                             </a>
@@ -214,11 +215,14 @@
             </nav>
             </div>
         </aside>
-        <div class="content-wrapper" id="filigrane">
-            <div style="margin-left:20px;margin-right:20px;">
-                {% block body %}{% endblock %}
+        {% if is_granted('ROLE_USER') %}
+            <div class="content-wrapper" id="filigrane">
+                <div class="text-right" style="background-color:#018bd0;"><a href="{{ path('app_logout') }}" type="button" class="btn btn-light"> <i class="fas fa-sign-out-alt"></i> Déconnecter</a></div>
+                <div style="margin-left:20px;margin-right:20px;">
+                    {% block body %}{% endblock %}
+                </div>
             </div>
-        </div>
+        {% endif %}
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
