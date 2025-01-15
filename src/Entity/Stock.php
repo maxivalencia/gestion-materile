@@ -29,6 +29,9 @@ class Stock
     #[ORM\ManyToOne(inversedBy: 'stocks')]
     private ?Service $service = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $expiration = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -99,6 +102,18 @@ class Stock
     public function setService(?Service $service): static
     {
         $this->service = $service;
+
+        return $this;
+    }
+
+    public function getExpiration(): ?\DateTimeInterface
+    {
+        return $this->expiration;
+    }
+
+    public function setExpiration(?\DateTimeInterface $expiration): static
+    {
+        $this->expiration = $expiration;
 
         return $this;
     }

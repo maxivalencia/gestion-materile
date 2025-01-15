@@ -50,6 +50,9 @@ class Mouvement
     #[ORM\Column(length: 255)]
     private ?string $observation = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $expiration = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,5 +209,17 @@ class Mouvement
     public function __toString(): string
     {
         return $this->getQuantite();
+    }
+
+    public function getExpiration(): ?\DateTimeInterface
+    {
+        return $this->expiration;
+    }
+
+    public function setExpiration(?\DateTimeInterface $expiration): static
+    {
+        $this->expiration = $expiration;
+
+        return $this;
     }
 }
