@@ -32,6 +32,9 @@ class Stock
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $expiration = null;
 
+    #[ORM\ManyToOne(inversedBy: 'stocks')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -114,6 +117,18 @@ class Stock
     public function setExpiration(?\DateTimeInterface $expiration): static
     {
         $this->expiration = $expiration;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

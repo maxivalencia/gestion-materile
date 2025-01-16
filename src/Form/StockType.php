@@ -16,6 +16,8 @@ class StockType extends AbstractType
             ->add('date')
             ->add('produit')
             ->add('unite')
+            ->add('service')
+            ->add('expiration')
         ;
     }
 

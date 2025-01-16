@@ -13,8 +13,8 @@ class AjoutStockType extends AbstractType
     {
         $builder
             ->add('quantite')
-            ->add('date')
-            ->add('expiration')
+            //->add('date')
+            //->add('expiration')
             ->add('produit')
             ->add('unite')
             ->add('service')

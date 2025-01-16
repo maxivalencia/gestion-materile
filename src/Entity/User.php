@@ -49,10 +49,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: HistoriqueMateriel::class, mappedBy: 'user')]
     private Collection $historiqueMateriels;
 
+    #[ORM\OneToMany(targetEntity: Stock::class, mappedBy: 'user')]
+    private Collection $stocks;
+
+    #[ORM\OneToMany(targetEntity: Mouvement::class, mappedBy: 'user_reception')]
+    private Collection $mouvements;
+
+    #[ORM\OneToMany(targetEntity: Mouvement::class, mappedBy: 'user_expedition')]
+    private Collection $mouvementsexpediteur;
+
     public function __construct()
     {
         $this->materiels = new ArrayCollection();
         $this->historiqueMateriels = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
+        $this->mouvements = new ArrayCollection();
+        $this->mouvementsexpediteur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -236,6 +248,96 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($historiqueMateriel->getUser() === $this) {
                 $historiqueMateriel->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stock>
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): static
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks->add($stock);
+            $stock->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): static
+    {
+        if ($this->stocks->removeElement($stock)) {
+            // set the owning side to null (unless already changed)
+            if ($stock->getUser() === $this) {
+                $stock->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mouvement>
+     */
+    public function getMouvements(): Collection
+    {
+        return $this->mouvements;
+    }
+
+    public function addMouvement(Mouvement $mouvement): static
+    {
+        if (!$this->mouvements->contains($mouvement)) {
+            $this->mouvements->add($mouvement);
+            $mouvement->setUserReception($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMouvement(Mouvement $mouvement): static
+    {
+        if ($this->mouvements->removeElement($mouvement)) {
+            // set the owning side to null (unless already changed)
+            if ($mouvement->getUserReception() === $this) {
+                $mouvement->setUserReception(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mouvement>
+     */
+    public function getMouvementsexpediteur(): Collection
+    {
+        return $this->mouvementsexpediteur;
+    }
+
+    public function addMouvementsexpediteur(Mouvement $mouvementsexpediteur): static
+    {
+        if (!$this->mouvementsexpediteur->contains($mouvementsexpediteur)) {
+            $this->mouvementsexpediteur->add($mouvementsexpediteur);
+            $mouvementsexpediteur->setUserExpedition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMouvementsexpediteur(Mouvement $mouvementsexpediteur): static
+    {
+        if ($this->mouvementsexpediteur->removeElement($mouvementsexpediteur)) {
+            // set the owning side to null (unless already changed)
+            if ($mouvementsexpediteur->getUserExpedition() === $this) {
+                $mouvementsexpediteur->setUserExpedition(null);
             }
         }
 

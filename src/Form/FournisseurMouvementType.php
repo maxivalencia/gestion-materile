@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MouvementType extends AbstractType
+class FournisseurMouvementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -29,7 +29,6 @@ class MouvementType extends AbstractType
             ->add('expedition_id')
             ->add('user_reception')
             ->add('user_expedition')
-        ;
         ;
     }
 
