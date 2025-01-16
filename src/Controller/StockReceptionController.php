@@ -29,7 +29,7 @@ class StockReceptionController extends AbstractController
         ]);
     }
 
-    #[Route('/reception/liste', name: 'app_reception_liste')]
+    #[Route('/reception/stock/liste', name: 'app_reception_stock_liste')]
     public function liste(MouvementRepository $mouvementRepository): Response
     {
         $service = $this->getUser()->getService();
@@ -81,6 +81,6 @@ class StockReceptionController extends AbstractController
         $entityManager->flush();  // Sauvegarder les changements dans la base de données
 
         // Redirection après le succès de l'opération
-        return $this->redirectToRoute('app_reception_liste', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_reception_stock_liste', [], Response::HTTP_SEE_OTHER);
     }
 }
