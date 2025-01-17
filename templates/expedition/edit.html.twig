@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edition Materiel</h1>
 
-    {{ include('materiel/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('materiel/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_expedition_liste') }}">back to list</a>
+    <a href="{{ path('app_expedition_liste') }}" class="btn btn-primary kl-bouton"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
 
     <!-- {{ include('materiel/_delete_form.html.twig') }} -->
 {% endblock %}

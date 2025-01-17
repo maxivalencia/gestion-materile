@@ -29,7 +29,7 @@ class StockReceptionController extends AbstractController
         ]);
     }
 
-    #[Route('/reception/stock/liste', name: 'app_reception_stock_liste')]
+    #[Route('/stock/reception/liste', name: 'app_stock_reception_liste')]
     public function liste(MouvementRepository $mouvementRepository): Response
     {
         $service = $this->getUser()->getService();

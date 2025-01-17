@@ -9,6 +9,7 @@ use App\Entity\Mouvement;
 use App\Form\MouvementType;
 use App\Form\AjoutMouvementType;
 use App\Repository\MaterielRepository;
+use App\Repository\MouvementRepository;
 use App\Repository\TypeMouvementRepository;
 use App\Repository\EtatRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,7 +29,16 @@ class StockExpeditionController extends AbstractController
         ]);
     }
 
-    #[Route('/stock/expedition', name: 'app_stock_expedition', methods: ['GET', 'POST'])]
+    #[Route('/stock/expedition/liste', name: 'app_expedition_stock_liste')]
+    public function liste(MouvementRepository $mouvementRepository): Response
+    {
+        $service = $this->getUser()->getService();
+        return $this->render('reception/liste.html.twig', [
+            'Mouvement' => $mouvementRepository->findBy(["service" => $service, "etat" => 6]),
+        ]);
+    }
+
+    #[Route('/stock/expedition/new', name: 'app_stock_expedition_new', methods: ['GET', 'POST'])]
     public function stock_ajout(Request $request, EntityManagerInterface $entityManager, TypeMouvementRepository $typeMouvementRepository, EtatRepository $etatRepository): Response
     {
         // fonction manao expedition entana amin'ny destinataire no eto

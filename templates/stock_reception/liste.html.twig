@@ -3,35 +3,43 @@
 {% block title %}Liste des Stocks{% endblock %}
 
 {% block body %}
-    <h1>Liste des Stocks</h1>
+    <h1>Liste des Stocks en attente de réception</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> -->
                 <th>Produit</th>
                 <th>Quantite</th>
                 <th>Unité</th>
                 <th>Date</th>
-                <!-- <th>actions</th> -->
+                <th>Numéro début</th>
+                <th>Numéro fin</th>
+                <th>Date d'expiration</th>
+                <th>Observation</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for stock in stocks %}
+        {% for mouvement in mouvements %}
             <tr>
-                <td>{{ stock.id }}</td>
-                <td>{{ stock.produit }}</td>
-                <td>{{ stock.quantite }}</td>
-                <td>{{ stock.Unite }}</td>
-                <td>{{ stock.date ? stock.date|date('d/m/Y H:i:s') : '' }}</td>
-                <!-- <td>
-                    <a href="{{ path('app_stock_show', {'id': stock.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
-                    <a href="{{ path('app_stock_edit', {'id': stock.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                </td> -->
+                <!-- <td>{{ mouvement.id }}</td> -->
+                <td>{{ mouvement.produit }}</td>
+                <td>{{ mouvement.quantite }}</td>
+                <td>{{ mouvement.Unite }}</td>
+                <td>{{ mouvement.date ? mouvement.date|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ mouvement.debutSerie }}</td>
+                <td>{{ mouvement.finSerie }}</td>
+                <td>{{ mouvement.expiration }}</td>
+                <td>{{ mouvement.observation }}</td>
+                <td>
+                    <!-- <a href="{{ path('app_stock_show', {'id': mouvement.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
+                    <a href="{{ path('app_stock_edit', {'id': mouvement.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> -->
+                </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">Aucun enregistrement trouvé</td>
+                <td colspan="9">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

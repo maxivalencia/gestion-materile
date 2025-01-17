@@ -23,7 +23,7 @@ class CommandeController extends AbstractController
         ]);
     }
 
-    /* #[Route('/commande/new', name: 'app_materiel_commande_new', methods: ['GET', 'POST'])]
+    #[Route('/commande/new', name: 'app_materiel_commande_new', methods: ['GET', 'POST'])]
     public function commande(Request $request, EntityManagerInterface $entityManager): Response
     {
         $materiel = new Materiel();
@@ -44,5 +44,5 @@ class CommandeController extends AbstractController
             'materiel' => $materiel,
             'form' => $form,
         ]);
-    } */
+    }
 }
