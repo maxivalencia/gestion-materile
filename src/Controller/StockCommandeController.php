@@ -49,7 +49,7 @@ class StockCommandeController extends AbstractController
             return $this->redirectToRoute('materiel_service', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('stock_ajout/ajout_stock.html.twig', [
+        return $this->renderForm('stock_commande/commande_stock.html.twig', [
             'materiel' => $mouvement,
             'form' => $form,
         ]);

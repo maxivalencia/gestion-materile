@@ -33,8 +33,8 @@ class StockReceptionController extends AbstractController
     public function liste(MouvementRepository $mouvementRepository): Response
     {
         $service = $this->getUser()->getService();
-        return $this->render('reception/liste.html.twig', [
-            'Mouvement' => $mouvementRepository->findBy(["service" => $service, "etat" => 6]),
+        return $this->render('stock_reception/liste.html.twig', [
+            'mouvements' => $mouvementRepository->findBy(["service" => $service, "etat" => 6]),
         ]);
     }
 

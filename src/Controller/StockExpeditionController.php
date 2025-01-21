@@ -33,8 +33,8 @@ class StockExpeditionController extends AbstractController
     public function liste(MouvementRepository $mouvementRepository): Response
     {
         $service = $this->getUser()->getService();
-        return $this->render('reception/liste.html.twig', [
-            'Mouvement' => $mouvementRepository->findBy(["service" => $service, "etat" => 6]),
+        return $this->render('stock_expedition/liste.html.twig', [
+            'mouvements' => $mouvementRepository->findBy(["service" => $service, "etat" => 6]),
         ]);
     }
 
@@ -61,7 +61,7 @@ class StockExpeditionController extends AbstractController
         }
 
         return $this->renderForm('stock_ajout/ajout_stock.html.twig', [
-            'materiel' => $mouvement,
+            'mouvements' => $mouvement,
             'form' => $form,
         ]);
     }
