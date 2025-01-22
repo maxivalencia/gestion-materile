@@ -6,6 +6,7 @@ use App\Entity\Mouvement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AjoutMouvementType extends AbstractType
 {
@@ -19,7 +20,11 @@ class AjoutMouvementType extends AbstractType
             ->add('reference')
             ->add('debutSerie')
             ->add('finSerie')
-            ->add('expiration')
+            ->add('expiration', DateType::class, [
+                'widget' => 'single_text', // Utilise un input de type date
+                'html5' => true,           // Active le calendrier HTML5 natif
+                'format' => 'yyyy-MM-dd',  // Format de la date (requis pour certains navigateurs)
+            ])
             //->add('date_reception')
             //->add('type')
             //->add('etat')

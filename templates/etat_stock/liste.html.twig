@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> -->
                 <th>Produit</th>
                 <th>Quantite</th>
                 <th>Unité</th>
@@ -19,11 +19,11 @@
         <tbody>
         {% for stock in stocks %}
             <tr>
-                <td>{{ stock.id }}</td>
+                <!-- <td>{{ stock.id }}</td> -->
                 <td>{{ stock.produit }}</td>
                 <td>{{ stock.quantite }}</td>
                 <td>{{ stock.Unite }}</td>
-                <td>{{ stock.date ? stock.date|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ stock.date ? stock.date|date('d/m/Y') : '' }}</td>
                 <!-- <td>
                     <a href="{{ path('app_stock_show', {'id': stock.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
                     <a href="{{ path('app_stock_edit', {'id': stock.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

@@ -27,12 +27,13 @@
                 <td>{{ mouvement.produit }}</td>
                 <td>{{ mouvement.quantite }}</td>
                 <td>{{ mouvement.Unite }}</td>
-                <td>{{ mouvement.date ? mouvement.date|date('d/m/Y H:i:s') : '' }}</td>
+                <td>{{ mouvement.date ? mouvement.date|date('d/m/Y') : '' }}</td>
                 <td>{{ mouvement.debutSerie }}</td>
                 <td>{{ mouvement.finSerie }}</td>
                 <td>{{ mouvement.expiration }}</td>
                 <td>{{ mouvement.observation }}</td>
                 <td>
+                    <a href="{{ path('app_stock_reception', {'id': materiel.id}) }}">Reçu</a>
                     <!-- <a href="{{ path('app_stock_show', {'id': mouvement.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>
                     <a href="{{ path('app_stock_edit', {'id': mouvement.id}) }}" class="btn btn-danger"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> -->
                 </td>

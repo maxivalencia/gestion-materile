@@ -60,7 +60,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item" class="background-color:#0000FF;">
+                        <li class="nav-item" style="background-color:#0b7adb;">
                             <img src="/image/banniere_dgsr.png" class="img-fluid" alt="Image en-tête de la DGSR">
                             <a href="#" class="nav-link">
                                 <p>Gestion de matériel</p>
@@ -95,7 +95,7 @@
                         <hr>
                     {% endif %}
                     {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item" class="background-color:#0000FF;">
+                        <li class="nav-item" style="background-color:#0b7adb;">
                             <a href="#" class="nav-link">
                                 <p>Gestion de stock</p>
                             </a>
@@ -129,7 +129,7 @@
                         <hr>
                     {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item">
+                        <li class="nav-item" style="background-color:#0b7adb;">
                             <a href="#" class="nav-link">
                                 <p>Donnée de base</p>
                             </a>
