@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Materiel;
+use App\Entity\Stock;
 use App\Form\MaterielType;
+use App\Form\StockType;
 use App\Form\ExpeditionMaterielType;
+use App\Form\ExpeditionStockType;
 use App\Repository\MaterielRepository;
+use App\Repository\StockRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
