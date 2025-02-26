@@ -57,7 +57,7 @@ class StockExpeditionController extends AbstractController
             $entityManager->persist($mouvement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('materiel_service', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_etat_stock_liste', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('stock_ajout/ajout_stock.html.twig', [

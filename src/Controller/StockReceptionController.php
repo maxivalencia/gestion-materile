@@ -81,6 +81,6 @@ class StockReceptionController extends AbstractController
         $entityManager->flush();  // Sauvegarder les changements dans la base de données
 
         // Redirection après le succès de l'opération
-        return $this->redirectToRoute('app_reception_stock_liste', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_stock_reception_liste', [], Response::HTTP_SEE_OTHER);
     }
 }
