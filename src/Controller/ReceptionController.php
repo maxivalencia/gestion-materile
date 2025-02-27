@@ -23,6 +23,7 @@ class ReceptionController extends AbstractController
         ]);
     }
 
+    // fonction mampiseho ny lisitr'ireo fitaovana tokony ho tonga ao amin'ny service na centre iray, izay efa amin'ny lalana
     #[Route('/reception/liste', name: 'app_reception_liste')]
     public function liste(MaterielRepository $materielRepository): Response
     {
@@ -32,6 +33,7 @@ class ReceptionController extends AbstractController
         ]);
     }
 
+    // fonction manao activation ny matériel tonga ao amin'ny centre iray na service irao
     #[Route('/reception/{id}/edit', name: 'app_reception_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response
     {
@@ -50,6 +52,7 @@ class ReceptionController extends AbstractController
         ]);
     }
 
+    // fonction manao activation ny matériel tonga ao amin'ny centre iray na service irao izay nohatsaraina kokoa
     #[Route('/{id}/recevoir', name: 'app_materiel_reception', methods: ['GET', 'POST'])]
     public function MaterielReception($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {

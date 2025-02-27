@@ -32,6 +32,7 @@ class StockAjoutController extends AbstractController
         ]);
     }
 
+    // fonction manao ajout stock
     #[Route('/stock/ajout/new', name: 'app_stock_ajout_new', methods: ['GET', 'POST'])]
     public function stock_ajout(Request $request, ConversionRepository $conversionRepository, EntityManagerInterface $entityManager, TypeMouvementRepository $typeMouvementRepository, EtatRepository $etatRepository, StockRepository $stockRepository): Response
     {

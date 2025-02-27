@@ -18,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class EtatMaterielController extends AbstractController
 {
+    // fonction manao redirection amin'ny login fotsiny ito voalohany ito fa tsy dia ilay etat matériel loatra
     #[Route('/', name: 'materiel_service')]
     public function indexPrincipale(): Response
     {
@@ -37,6 +38,7 @@ class EtatMaterielController extends AbstractController
         ]);
     }
 
+    // liste des matériels ao amin'ny service iray na centre iray sady afaka manova ny état
     #[Route('/etat/materiel/liste', name: 'app_etat_materiel_liste')]
     public function liste(Request $request, MaterielRepository $materielRepository, EtatRepository $etatRepository, EntityManagerInterface $entityManager): Response
     {
@@ -63,6 +65,7 @@ class EtatMaterielController extends AbstractController
         ]);
     }
 
+    // fonction manova ny état matériel ho lasa en marche
     #[Route('/{id}/marche', name: 'app_materiel_marche', methods: ['GET', 'POST'])]
     public function MaterielMarche($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
@@ -92,6 +95,7 @@ class EtatMaterielController extends AbstractController
         return $this->redirectToRoute('app_etat_materiel_liste', [], Response::HTTP_SEE_OTHER);
     }
 
+    // fonction manova ny état matériel ho lasa expédition
     #[Route('/{id}/expedier', name: 'app_materiel_expedition', methods: ['GET', 'POST'])]
     public function MaterielExpedition($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
@@ -120,6 +124,7 @@ class EtatMaterielController extends AbstractController
         return $this->redirectToRoute('app_etat_materiel_liste', [], Response::HTTP_SEE_OTHER);
     }
 
+    // fonction manova ny état matériel ho en panne raha misy fahasimbana
     #[Route('/{id}/panne', name: 'app_materiel_panne', methods: ['GET', 'POST'])]
     public function MaterielPanne($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
@@ -148,6 +153,7 @@ class EtatMaterielController extends AbstractController
         return $this->redirectToRoute('app_etat_materiel_liste', [], Response::HTTP_SEE_OTHER);
     }
 
+    // fonction manova ny état matériel ho lasa en stock raha entana vao tonga
     #[Route('/{id}/stock', name: 'app_materiel_stock', methods: ['GET', 'POST'])]
     public function MaterielStock($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
@@ -160,7 +166,7 @@ class EtatMaterielController extends AbstractController
             throw $this->createNotFoundException('Materiel non trouvé');
         }
 
-        // Trouver l'état avec l'ID 6
+        // Trouver l'état avec l'ID 1
         $etat = $etatRepository->findOneBy(["id" => 1]);
         
         if (!$etat) {
@@ -176,6 +182,7 @@ class EtatMaterielController extends AbstractController
         return $this->redirectToRoute('app_etat_materiel_liste', [], Response::HTTP_SEE_OTHER);
     }
 
+    // fonction manova ny état matériel ho en reparation raha ohatra ka ao anaty fanamborana ilay fitaovana
     #[Route('/{id}/reparation', name: 'app_materiel_reparation', methods: ['GET', 'POST'])]
     public function MaterielReparation($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {

@@ -26,6 +26,7 @@ class ExpeditionController extends AbstractController
         ]);
     }
 
+    // fonction mampiseo ny lisitr'ireo matériel encours d'expédition
     #[Route('/expedition/liste', name: 'app_expedition_liste')]
     public function liste(MaterielRepository $materielRepository): Response
     {
@@ -35,6 +36,7 @@ class ExpeditionController extends AbstractController
         ]);
     }
 
+    // fonction manao expédition matériel any amin'ny service na centre
     #[Route('/expedition/{id}/edit', name: 'app_expedition_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response
     {

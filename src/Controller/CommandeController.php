@@ -23,6 +23,7 @@ class CommandeController extends AbstractController
         ]);
     }
 
+    // fonction fanaovana ny commande ny etanana ilainy amin'ny resaka matériel ny service na ny centre eto
     #[Route('/commande/new', name: 'app_materiel_commande_new', methods: ['GET', 'POST'])]
     public function commande(Request $request, EntityManagerInterface $entityManager): Response
     {

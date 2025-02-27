@@ -22,6 +22,7 @@ class EtatStockController extends AbstractController
         ]);
     }
 
+    // fonction manao affichage ny stock ao anaty service na fonction iray
     #[Route('/etat/stock/liste', name: 'app_etat_stock_liste')]
     public function liste(Request $request, StockRepository $stockRepository, EtatRepository $etatRepository, EntityManagerInterface $entityManager): Response
     {

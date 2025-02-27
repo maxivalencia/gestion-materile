@@ -36,10 +36,10 @@ class AjoutController extends AbstractController
         ]);
     }
 
+    // fonction manao ajout entana amin'ny approvisionnement no eto amin'ny resaka stock, tokony appro na izay service mandray ny entana avy amin'ny fournisseur no eto
     #[Route('/stock/ajout/fournisseur', name: 'app_stock_ajout_fournisseur', methods: ['GET', 'POST'])]
     public function stock_ajout(Request $request, StockRepository $stockRepository, ConversionRepository $conversionRepository, EntityManagerInterface $entityManager, TypeMouvementRepository $typeMouvementRepository, EtatRepository $etatRepository): Response
     {
-        // fonction manao ajout entana amin'ny destinataire no eto
         $mouvement = new Mouvement();
         $form = $this->createForm(FournisseurMouvementType::class, $mouvement);
         $form->handleRequest($request);
@@ -87,6 +87,7 @@ class AjoutController extends AbstractController
         ]);
     }
 
+    // fonction manao ajout entana amin'ny approvisionnement no eto amin'ny resaka matériel, tokony appro na izay service mandray ny entana avy amin'ny fournisseur no eto
     #[Route('/ajout/new', name: 'app_materiel_ajout_new', methods: ['GET', 'POST'])]
     public function commande(Request $request, EntityManagerInterface $entityManager): Response
     {

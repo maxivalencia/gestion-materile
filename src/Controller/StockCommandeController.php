@@ -27,6 +27,7 @@ class StockCommandeController extends AbstractController
         ]);
     }
 
+    // fonction mamao commande fourniture
     #[Route('/stock/commande/new', name: 'app_stock_commande_new', methods: ['GET', 'POST'])]
     public function stock_commande(Request $request, EntityManagerInterface $entityManager, TypeMouvementRepository $typeMouvementRepository, EtatRepository $etatRepository): Response
     {
