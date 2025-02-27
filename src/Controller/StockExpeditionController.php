@@ -29,6 +29,7 @@ class StockExpeditionController extends AbstractController
         ]);
     }
 
+    // fonction misy ny liste fourniture en cours d'expédition
     #[Route('/stock/expedition/liste', name: 'app_expedition_stock_liste')]
     public function liste(MouvementRepository $mouvementRepository): Response
     {
@@ -38,6 +39,7 @@ class StockExpeditionController extends AbstractController
         ]);
     }
 
+    // fonction manao expédition entana amin'ny service na centre
     #[Route('/stock/expedition/new', name: 'app_stock_expedition_new', methods: ['GET', 'POST'])]
     public function stock_ajout(Request $request, EntityManagerInterface $entityManager, TypeMouvementRepository $typeMouvementRepository, EtatRepository $etatRepository): Response
     {

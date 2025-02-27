@@ -29,6 +29,7 @@ class StockReceptionController extends AbstractController
         ]);
     }
 
+    // fonction liste fourniture encours de réception
     #[Route('/stock/reception/liste', name: 'app_stock_reception_liste')]
     public function liste(MouvementRepository $mouvementRepository): Response
     {
@@ -38,6 +39,7 @@ class StockReceptionController extends AbstractController
         ]);
     }
 
+    // fonction mandray ny entana tonga
     #[Route('/stock/reception/{id}', name: 'app_stock_reception', methods: ['GET', 'POST'])]
     public function stock_ajout($id, EntityManagerInterface $entityManager, MouvementRepository $mouvementRepository, TypeMouvementRepository $typeMouvementRepository, EtatRepository $etatRepository): Response
     {
