@@ -1,0 +1,17 @@
+<div class="text-center" style="background-color:#018bd0;color:white;font-weight:bold;font-size:48px;">
+    OUTILS POUR LA GESTION DES STOCKS ET DES MATERIELS
+    <table style="white-space:normal; width:100%;">
+        <tr style="white-space:normal; width:100%;">
+            <td style="white-space:normal; width:100%;">
+                <div class="text-center" style=";color:white;font-weight:bold;font-size:24px;">
+                    Utilisateur connecté : {{ app.user.username }}
+                </div>
+            </td>
+            <td style="white-space:normal; width:20%;">
+                <div class="text-right" style="padding-right:20px;padding-left:20px;">
+                    <a href="{{ path('app_logout') }}" type="button" class="btn btn-light"> <i class="fas fa-sign-out-alt"></i> Déconnecter</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

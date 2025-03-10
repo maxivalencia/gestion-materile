@@ -13,7 +13,7 @@
         {% include 'fichier_interface/menu.html.twig' %}
         {% if is_granted('ROLE_USER') %}
             <div class="content-wrapper" id="filigrane">
-                <div class="text-right" style="background-color:#018bd0;"><a href="{{ path('app_logout') }}" type="button" class="btn btn-light"> <i class="fas fa-sign-out-alt"></i> Déconnecter</a></div>
+            {% include 'fichier_interface/header.html.twig' %}
                 <div style="margin-left:20px;margin-right:20px;">
                     {% block body %}{% endblock %}
                 </div>
