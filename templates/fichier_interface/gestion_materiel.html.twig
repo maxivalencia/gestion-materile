@@ -1,0 +1,35 @@
+{% if is_granted('ROLE_USER') %}
+    <li class="nav-item" style="background-color:#0b7adb;">
+        <img src="/image/banniere_dgsr.png" class="img-fluid" alt="Image en-tête de la DGSR">
+        <a href="#" class="nav-link">
+            <p>Gestion de matériel</p>
+        </a>
+    </li>
+    <hr>
+    <li class="nav-item">
+        <a href="{{ path('app_etat_materiel_liste') }}" class="nav-link">
+            <p>Etat Materiel</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_expedition_liste') }}" class="nav-link">
+            <p>Expedition</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_reception_liste') }}" class="nav-link">
+            <p>Reception</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_materiel_commande_new') }}" class="nav-link">
+            <p>Commande</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_materiel_ajout_new') }}" class="nav-link">
+            <p>Ajout</p>
+        </a>
+    </li>
+    <hr>
+{% endif %}

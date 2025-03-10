@@ -1,0 +1,30 @@
+{% if is_granted('ROLE_USER') %}
+    <li class="nav-item" style="background-color:#0b7adb;">
+        <a href="#" class="nav-link">
+            <p>Gestionnaire</p>
+        </a>
+    </li>
+    <hr>
+    <li class="nav-item">
+        <!-- <a href="{{ path('app_etat_stock_liste') }}" class="nav-link"> -->
+        <a href="{{ path('app_stock_expedition_new') }}" class="nav-link">
+            <p>Expédition Stock</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_expedition_stock_liste') }}" class="nav-link">
+            <p>Expédition Matériel</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_stock_ajout_fournisseur') }}" class="nav-link">
+            <p>Réception Stock</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ path('app_materiel_ajout_new') }}" class="nav-link">
+            <p>Réception Matériel</p>
+        </a>
+    </li>
+    <hr>
+{% endif %}
