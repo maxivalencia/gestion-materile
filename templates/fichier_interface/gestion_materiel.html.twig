@@ -5,6 +5,8 @@
             <p>Gestion de matériel</p>
         </a>
     </li>
+{% endif %}
+{% if is_granted('ROLE_USER') %}
     <hr>
     <li class="nav-item">
         <a href="{{ path('app_etat_materiel_liste') }}" class="nav-link">
