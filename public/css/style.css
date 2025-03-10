@@ -9,7 +9,7 @@
 } */
 
 body{
-    background-image:url('../image/logo_dgsr.png');
+    background-image:url('../image/logo_dgsr_2.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -273,4 +273,13 @@ h1 {
     text-align: center;
     /* padding: 40px 0; */
     z-index: 10;
+}
+
+.kl-vertical-center {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    margin: 0;
+    padding-bottom: 100px;
 }

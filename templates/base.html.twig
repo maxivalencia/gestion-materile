@@ -13,7 +13,7 @@
         {% include 'fichier_interface/menu.html.twig' %}
         {% if is_granted('ROLE_USER') %}
             <div class="content-wrapper" id="filigrane">
-            {% include 'fichier_interface/header.html.twig' %}
+                {% include 'fichier_interface/header.html.twig' %}
                 <div style="margin-left:20px;margin-right:20px;">
                     {% block body %}{% endblock %}
                 </div>
