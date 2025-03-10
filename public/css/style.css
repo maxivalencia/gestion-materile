@@ -8,6 +8,21 @@
     -moz-opacity:1;
 } */
 
+body{
+    background-image:url('../image/logo_dgsr.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    filter:alpha(opacity=50);
+    opacity: 0.9;
+    -moz-opacity:1;
+}
+
+h1 {
+    text-align: center;
+    /* align: center; */
+}
+
 .arriere{
     /* background-image:url('../image/logo_dgsr.png'); */
     background-repeat: no-repeat;
