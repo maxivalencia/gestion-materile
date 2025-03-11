@@ -154,7 +154,7 @@ class EtatMaterielController extends AbstractController
     }
 
     // fonction manova ny état matériel ho lasa en stock raha entana vao tonga
-    #[Route('/stock/{id}', name: 'app_materiel_stock', methods: ['GET', 'POST'])]
+    #[Route('/materiel_stock/{id}', name: 'app_materiel_stock', methods: ['GET', 'POST'])]
     public function MaterielStock($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
         //$materiel = new Materiel();

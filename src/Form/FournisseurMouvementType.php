@@ -23,6 +23,7 @@ class FournisseurMouvementType extends AbstractType
                 'widget' => 'single_text', // Utilise un input de type date
                 'html5' => true,           // Active le calendrier HTML5 natif
                 'format' => 'yyyy-MM-dd',  // Format de la date (requis pour certains navigateurs)
+                'required' => false,
             ])
             ->add('date_reception', DateType::class, [
                 'widget' => 'single_text', // Utilise un input de type date
