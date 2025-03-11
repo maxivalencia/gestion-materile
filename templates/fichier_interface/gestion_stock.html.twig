@@ -1,23 +1,23 @@
-{% if is_granted('ROLE_USER') %}
+{% if is_granted('ROLE_RESPONSABLE_STOCK') %}
     <li class="nav-item" style="background-color:#0b7adb;">
         <a href="#" class="nav-link">
-            <p>Gestion de stock</p>
+            <p>Gestion de Stock</p>
         </a>
     </li>
     <hr>
     <li class="nav-item">
         <a href="{{ path('app_etat_stock_liste') }}" class="nav-link">
-            <p>Etat Stock</p>
+            <p>Etat des Stocks</p>
         </a>
     </li>
     <li class="nav-item">
         <a href="{{ path('app_expedition_stock_liste') }}" class="nav-link">
-            <p>Expedition</p>
+            <p>Expédition</p>
         </a>
     </li>
     <li class="nav-item">
         <a href="{{ path('app_stock_reception_liste') }}" class="nav-link">
-            <p>Reception</p>
+            <p>Réception</p>
         </a>
     </li>
     <li class="nav-item">
@@ -27,7 +27,7 @@
     </li>
     <li class="nav-item">
         <a href="{{ path('app_stock_ajout_new') }}" class="nav-link">
-            <p>Ajout</p>
+            <p>Ajout de Stock</p>
         </a>
     </li>
     <hr>

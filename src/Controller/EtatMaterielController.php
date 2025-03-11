@@ -66,7 +66,7 @@ class EtatMaterielController extends AbstractController
     }
 
     // fonction manova ny état matériel ho lasa en marche
-    #[Route('/{id}/marche', name: 'app_materiel_marche', methods: ['GET', 'POST'])]
+    #[Route('/marche/{id}', name: 'app_materiel_marche', methods: ['GET', 'POST'])]
     public function MaterielMarche($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
         //$materiel = new Materiel();
@@ -96,7 +96,7 @@ class EtatMaterielController extends AbstractController
     }
 
     // fonction manova ny état matériel ho lasa expédition
-    #[Route('/{id}/expedier', name: 'app_materiel_expedition', methods: ['GET', 'POST'])]
+    #[Route('/expedier/{id}', name: 'app_materiel_expedition', methods: ['GET', 'POST'])]
     public function MaterielExpedition($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
         //$materiel = new Materiel();
@@ -125,7 +125,7 @@ class EtatMaterielController extends AbstractController
     }
 
     // fonction manova ny état matériel ho en panne raha misy fahasimbana
-    #[Route('/{id}/panne', name: 'app_materiel_panne', methods: ['GET', 'POST'])]
+    #[Route('/panne/{id}', name: 'app_materiel_panne', methods: ['GET', 'POST'])]
     public function MaterielPanne($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
         //$materiel = new Materiel();
@@ -154,7 +154,7 @@ class EtatMaterielController extends AbstractController
     }
 
     // fonction manova ny état matériel ho lasa en stock raha entana vao tonga
-    #[Route('/{id}/stock', name: 'app_materiel_stock', methods: ['GET', 'POST'])]
+    #[Route('/stock/{id}', name: 'app_materiel_stock', methods: ['GET', 'POST'])]
     public function MaterielStock($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
         //$materiel = new Materiel();
@@ -183,7 +183,7 @@ class EtatMaterielController extends AbstractController
     }
 
     // fonction manova ny état matériel ho en reparation raha ohatra ka ao anaty fanamborana ilay fitaovana
-    #[Route('/{id}/reparation', name: 'app_materiel_reparation', methods: ['GET', 'POST'])]
+    #[Route('/reparation/{id}', name: 'app_materiel_reparation', methods: ['GET', 'POST'])]
     public function MaterielReparation($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
     {
         //$materiel = new Materiel();

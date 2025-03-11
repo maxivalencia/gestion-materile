@@ -37,7 +37,7 @@ class ExpeditionController extends AbstractController
     }
 
     // fonction manao expédition matériel any amin'ny service na centre
-    #[Route('/expedition/{id}/edit', name: 'app_expedition_edit', methods: ['GET', 'POST'])]
+    #[Route('/expedition/edit/{id}', name: 'app_expedition_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ExpeditionMaterielType::class, $materiel);

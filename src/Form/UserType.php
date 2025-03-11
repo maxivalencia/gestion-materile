@@ -16,19 +16,35 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $roles = [
-            'Super-admin' => 'ROLE_SUPER_ADMIN',
-            'admin' => 'ROLE_ADMIN',
-            'administrateur-materiel' => 'ROLE_APPROVISIONNEMENT',
-            'responsable-materiel' => 'ROLE_RESPONSABLE',
+            'Utilisateur simple' => 'ROLE_USER_AUTORISED',
+            'Gestionnaire des stocks' => 'ROLE_RESPONSABLE_STOCK',
+            'Gestionnaire des materiels' => 'ROLE_RESPONSABLE_MATERIEL',
+            'Responsable premier niveau' => 'ROLE_RESPONSABLE',
+            'Service Informatique et Télécommunication' => 'ROLE_GESTIONNAIRE_INFORMATIQUE',
+            'Service Automobile' => 'ROLE_GESTIONNAIRE_AUTOMOBILE',
+            'Service Soutien' => 'ROLE_GESTIONNAIRE_SOUTIEN',
+            'Service Sanitaire' => 'ROLE_GESTIONNAIRE_SANTE',
+            'Mag/Appro' => 'ROLE_GESTIONNAIRE_APPROVISIONNEMENT',
+            'Responsable principale' => 'ROLE_GESTIONNAIRE',
+            'Administrateur' => 'ROLE_ADMIN',
+            'Administrateur principale' => 'ROLE_SUPER_ADMIN',
         ];
         $builder
             ->add('username')
-            ->add('roles', ChoiceType::class, [
+            /* ->add('roles', ChoiceType::class, [
                 'label' => 'Rôle',
                 'choices' => $roles,
                 //'multiple' => true,
-                'expanded' => true,
-                //'data' => true,
+                'expanded' => false,
+                'data' => true,
+            ]) */
+                ->add('rolesimple', ChoiceType::class, [
+                'label' => 'Rôle',
+                'choices' => $roles,
+                //'multiple' => true,
+                'expanded' => false,
+                'data' => true,
+                'mapped' => false,
             ])
             ->add('password', RepeatedType::class,[
                 'label' => 'Mot de passe',

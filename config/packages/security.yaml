@@ -1,8 +1,16 @@
 security:
     role_hierarchy:
-        ROLE_RESPONSABLE : ROLE_USER
-        ROLE_APPROVISIONNEMENT : ROLE_RESPONSABLE
-        ROLE_ADMIN : ROLE_APPROVISIONNEMENT
+        ROLE_USER_AUTORISED : [ROLE_USER]
+        ROLE_RESPONSABLE_STOCK : [ROLE_USER_AUTORISED]
+        ROLE_RESPONSABLE_MATERIEL : [ROLE_USER_AUTORISED]
+        ROLE_RESPONSABLE : [ROLE_RESPONSABLE_STOCK, ROLE_RESPONSABLE_MATERIEL]
+        ROLE_GESTIONNAIRE_INFORMATIQUE : [ROLE_RESPONSABLE]
+        ROLE_GESTIONNAIRE_AUTOMOBILE : [ROLE_RESPONSABLE]
+        ROLE_GESTIONNAIRE_SOUTIEN : [ROLE_RESPONSABLE]
+        ROLE_GESTIONNAIRE_SANTE : [ROLE_RESPONSABLE]
+        ROLE_GESTIONNAIRE_APPROVISIONNEMENT : [ROLE_RESPONSABLE]
+        ROLE_GESTIONNAIRE : [ROLE_GESTIONNAIRE_INFORMATIQUE, ROLE_GESTIONNAIRE_SOUTIEN, ROLE_GESTIONNAIRE_SANTE, ROLE_GESTIONNAIRE_APPROVISIONNEMENT]
+        ROLE_ADMIN : [ROLE_GESTIONNAIRE]
         ROLE_SUPER_ADMIN : [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
@@ -45,8 +53,48 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # partie azon'ny olona rehetra hidirana
+        # - { path: ^/register$, roles: ROLE_USER }
+        # - { path: ^/login$, roles: ROLE_USER }
+        # partie natokana hoan'ny responsable matériel
+        - { path: ^/commande/new$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/etat/materiel/liste$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/marche/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/expedier/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/panne/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/stock/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/reparation/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/expedition/liste$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/expedition/edit/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/reception/liste$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/reception/edit/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        - { path: ^/recevoir/\d+$, roles: ROLE_RESPONSABLE_MATERIEL }
+        # partie natokana hoan'ny responsable stock
+        - { path: ^/etat/stock/liste$, roles: ROLE_RESPONSABLE_STOCK }
+        - { path: ^/stock/ajout/new$, roles: ROLE_RESPONSABLE_STOCK }
+        - { path: ^/stock/commande/new$, roles: ROLE_RESPONSABLE_STOCK }
+        - { path: ^/stock/expedition/liste$, roles: ROLE_RESPONSABLE_STOCK }
+        - { path: ^/stock/expedition/new$, roles: ROLE_RESPONSABLE_STOCK }
+        - { path: ^/stock/reception/liste$, roles: ROLE_RESPONSABLE_STOCK }
+        - { path: ^/stock/reception/\d+$, roles: ROLE_RESPONSABLE_STOCK }
+        # partie natokana hoan'ny mpiandraikitra approvisionnement
+        - { path: ^/stock/ajout/fournisseur$, roles: ROLE_RESPONSABLE }
+        - { path: ^/ajout/new$, roles: ROLE_RESPONSABLE }
+        # partie natokana hoan'ny administrateur
+        - { path: ^/conversion, roles: ROLE_ADMIN }
+        - { path: ^/etat, roles: ROLE_ADMIN }
+        - { path: ^/fournisseur, roles: ROLE_ADMIN }
+        - { path: ^/genre/produit, roles: ROLE_ADMIN }
+        - { path: ^/historique/materiel, roles: ROLE_ADMIN }
+        - { path: ^/materiel, roles: ROLE_ADMIN }
+        - { path: ^/mouvement, roles: ROLE_ADMIN }
+        - { path: ^/produit, roles: ROLE_ADMIN }
+        - { path: ^/service, roles: ROLE_ADMIN }
+        - { path: ^/stock, roles: ROLE_ADMIN }
+        - { path: ^/type/mouvement, roles: ROLE_ADMIN }
+        - { path: ^/type/produit, roles: ROLE_ADMIN }
+        - { path: ^/unite, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_ADMIN }
 
 when@test:
     security:

@@ -34,6 +34,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $hashedPassord = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassord);
+            $user->setRoles([$form->get('rolesimple')->getData()]);
             $entityManager->persist($user);
             $entityManager->flush();
 

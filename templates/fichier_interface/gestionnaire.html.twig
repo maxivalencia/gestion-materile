@@ -1,29 +1,29 @@
-{% if is_granted('ROLE_USER') %}
+{% if is_granted('ROLE_GESTIONNAIRE') %}
     <li class="nav-item" style="background-color:#0b7adb;">
         <a href="#" class="nav-link">
-            <p>Gestionnaire</p>
+            <p>Gestion des Approsionnements</p>
         </a>
     </li>
     <hr>
     <li class="nav-item">
         <!-- <a href="{{ path('app_etat_stock_liste') }}" class="nav-link"> -->
         <a href="{{ path('app_stock_expedition_new') }}" class="nav-link">
-            <p>Expédition Stock</p>
+            <p>Expédition d'Article</p>
         </a>
     </li>
     <li class="nav-item">
         <a href="{{ path('app_expedition_stock_liste') }}" class="nav-link">
-            <p>Expédition Matériel</p>
+            <p>Expédition de Matériel</p>
         </a>
     </li>
     <li class="nav-item">
         <a href="{{ path('app_stock_ajout_fournisseur') }}" class="nav-link">
-            <p>Réception Stock</p>
+            <p>Réception d'Article</p>
         </a>
     </li>
     <li class="nav-item">
         <a href="{{ path('app_materiel_ajout_new') }}" class="nav-link">
-            <p>Réception Matériel</p>
+            <p>Réception de Matériel</p>
         </a>
     </li>
     <hr>
