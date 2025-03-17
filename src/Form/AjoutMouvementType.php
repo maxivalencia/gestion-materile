@@ -29,7 +29,7 @@ class AjoutMouvementType extends AbstractType
             //->add('date_reception')
             //->add('type')
             //->add('etat')
-            ->add('service')
+            //->add('service')
             //->add('fournisseur')
             //->add('expedition_id')
             //->add('user_reception')

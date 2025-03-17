@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use DateTime;
 
-// cette class permet l'ajout des articles livrés par les fournisseur
+// cette class permet l'ajout des articles livrés par les fournisseurs, que ce soient consommables ou matériels
 class AjoutController extends AbstractController
 {
     #[Route('/ajout', name: 'app_ajout')]
@@ -69,7 +69,8 @@ class AjoutController extends AbstractController
                 $stock->setProduit($mouvement->getProduit());
                 $stock->setQuantite($quantite);
                 $stock->setUnite($unite);
-                $stock->setService($mouvement->getService());
+                // $stock->setService($mouvement->getService());
+                $stock->setService($this->getUser()->getService());
                 $stock->setDate(new DateTime());
             } else {
                 $stock->setQuantite($stock->getQuantite() + $quantite);
@@ -78,7 +79,7 @@ class AjoutController extends AbstractController
             $entityManager->persist($stock);
             $entityManager->flush();
 
-            return $this->redirectToRoute('materiel_service', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_etat_stock_liste_approvisionnement', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('stock_ajout/ajout_stock.html.twig', [
@@ -89,15 +90,17 @@ class AjoutController extends AbstractController
 
     // fonction manao ajout entana amin'ny approvisionnement no eto amin'ny resaka matériel, tokony appro na izay service mandray ny entana avy amin'ny fournisseur no eto
     #[Route('/ajout/new', name: 'app_materiel_ajout_new', methods: ['GET', 'POST'])]
-    public function commande(Request $request, EntityManagerInterface $entityManager): Response
+    public function commande(Request $request, EntityManagerInterface $entityManager, EtatRepository $etatRepository): Response
     {
         $materiel = new Materiel();
         $form = $this->createForm(AjoutType::class, $materiel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $etat_materiel = $etatRepository->findOneBy(["id" => 1]);
             $materiel->setDate(new DateTime());
             $materiel->setService($this->getUser()->getService());
+            $materiel->setEtat($etat_materiel);
             $materiel->setUser($this->getUser());
             $entityManager->persist($materiel);
             $entityManager->flush();

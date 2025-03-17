@@ -19,7 +19,7 @@ class AjoutType extends AbstractType
             ->add('observation')
             ->add('produit')
             //->add('service')
-            ->add('etat')
+            //->add('etat')
             //->add('user')
         ;
     }

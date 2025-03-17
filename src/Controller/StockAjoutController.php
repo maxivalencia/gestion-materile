@@ -66,7 +66,8 @@ class StockAjoutController extends AbstractController
                 $stock->setProduit($mouvement->getProduit());
                 $stock->setQuantite($quantite);
                 $stock->setUnite($unite);
-                $stock->setService($mouvement->getService());
+                //$stock->setService($mouvement->getService());
+                $stock->setService($this->getUser()->getService());
                 $stock->setDate(new DateTime());
             } else {
                 $stock->setQuantite($stock->getQuantite() + $quantite);

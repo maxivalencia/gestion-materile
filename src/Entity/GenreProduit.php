@@ -15,7 +15,7 @@ class GenreProduit
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $genre = null;
 
     #[ORM\OneToMany(targetEntity: Produit::class, mappedBy: 'genre')]

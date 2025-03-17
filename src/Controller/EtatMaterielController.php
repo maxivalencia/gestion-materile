@@ -65,6 +65,33 @@ class EtatMaterielController extends AbstractController
         ]);
     }
 
+    // liste des matériels ao amin'ny service iray na centre iray sady afaka manova ny état
+    #[Route('/etat/materiel/liste/approvisionnement', name: 'app_etat_materiel_liste_approvisionnement')]
+    public function liste_approvisionnement(Request $request, MaterielRepository $materielRepository, EtatRepository $etatRepository, EntityManagerInterface $entityManager): Response
+    {
+        // vardump($this->getUser());
+        //$service = $this->getUser()->getService();
+        //$materiel = $materielRepository->findBy(["service" => $service]);
+        $etat_id = $request->request->get('etat_id');
+        $materiel_id = $request->request->get('materiel_id');
+        if ($etat_id) {
+            // Changer l'état du materiel et sauvegarder dans la base de données
+            $mat = $materielRepository->findOneBy(['id' => $materiel_id]);
+            $etat = $etatRepository->findOneBy(['id' => $etat_id]);
+            $mat->setEtat($etat);
+            $entityManager->persist($mat);  // Il faut persister les changements
+            $entityManager->flush();  // Sauvegarder les changements dans la base de données
+        }
+        $etats = $etatRepository->findAll();
+        $ne_pas_en_possession = [5, 6];
+        $materiels = $materielRepository->findByMaterielEnPossession($ne_pas_en_possession, $this->getUser()->getService()->getId());
+        return $this->render('etat_materiel/liste.html.twig', [
+            'materiels' => $materiels,
+            'etats' => $etats,
+            //'materiels' => $materielRepository->findAll(),
+        ]);
+    }
+
     // fonction manova ny état matériel ho lasa en marche
     #[Route('/marche/{id}', name: 'app_materiel_marche', methods: ['GET', 'POST'])]
     public function MaterielMarche($id, EntityManagerInterface $entityManager, EtatRepository $etatRepository, MaterielRepository $materielRepository): Response
