@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Etat Materiel{% endblock %}
+{% block title %}Materiel en Stock{% endblock %}
 
 {% block body %}
-    <h1>Etat Materiel</h1>
+    <h1>Materiel en Stock</h1>
 
     <table class="table">
         <thead>
@@ -35,7 +35,12 @@
                         <input type="hidden" value="{{ materiel.id }}" name="materiel_id" id="materiel_id">
                         <select name="etat_id" id="etat_id">
                             {% for etat in etats %}
-                                <option value="{{ etat.id }}" {% if etat.id == materiel.etat.id %}selected="selected"{% endif %}>{{ etat.etat }}</option>
+                                <option value="{{ etat.id }}" {% if etat.id == materiel.etat.id %} selected="selected"{% endif %}>{{ etat.etat }}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="service_id" id="service_id">
+                            {% for service in services %}
+                                <option value="{{ service.id }}" {% if service.id == materiel.service.id %} selected="selected"{% endif %}>{{ service.sigle }}</option>
                             {% endfor %}
                         </select>
                         <button type="submit" class="btn btn-success">Valider</button>

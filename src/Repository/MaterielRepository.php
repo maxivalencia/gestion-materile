@@ -61,4 +61,20 @@ class MaterielRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @return Materiel[] Returns an array of Materiel objects
+     */
+    public function findByMaterielEnStock(array $value, int $service_id): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.etat IN (:val1) AND m.service = :val2')
+            ->setParameter('val1', $value)
+            ->setParameter('val2', $service_id)
+            ->orderBy('m.id', 'ASC')
+            //->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

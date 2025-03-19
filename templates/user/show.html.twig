@@ -7,20 +7,20 @@
 
     <table class="table">
         <tbody>
-            <tr>
+            <!-- <tr>
                 <th>Id</th>
                 <td>{{ user.id }}</td>
-            </tr>
+            </tr> -->
             <tr>
-                <th>Username</th>
+                <th>Nom d'utilisateur</th>
                 <td>{{ user.username }}</td>
             </tr>
             <tr>
-                <th>Roles</th>
+                <th>Rôles</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>Mot de passe</th>
                 <td>{{ user.password }}</td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                 <td>{{ user.nom }}</td>
             </tr>
             <tr>
-                <th>Telephone</th>
+                <th>Téléphone</th>
                 <td>{{ user.telephone }}</td>
             </tr>
             <tr>

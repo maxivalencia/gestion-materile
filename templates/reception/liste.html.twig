@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réception Materiel{% endblock %}
+{% block title %}Réception Matériel{% endblock %}
 
 {% block body %}
-    <h1>Réception Materiel</h1>
+    <h1>Réception Matériel</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> -->
                 <th>Produit</th>
                 <th>Service</th>
                 <th>Date</th>
                 <th>Etat</th>
-                <th>Reference</th>
-                <th>Serie</th>
+                <th>Référence</th>
+                <th>Numéro de Série</th>
                 <th>Observation</th>
                 <th>actions</th>
             </tr>
@@ -22,16 +22,16 @@
         <tbody>
         {% for materiel in materiels %}
             <tr>
-                <td>{{ materiel.id }}</td>
+                <!-- <td>{{ materiel.id }}</td> -->
                 <td>{{ materiel.produit }}</td>
                 <td>{{ materiel.service }}</td>
-                <td>{{ materiel.date ? materiel.date|date('d-m-Y') : '' }}</td>
+                <td>{{ materiel.date ? materiel.date|date('d/m/Y') : '' }}</td>
                 <td>{{ materiel.etat }}</td>
                 <td>{{ materiel.reference }}</td>
                 <td>{{ materiel.serie }}</td>
                 <td>{{ materiel.observation }}</td>
                 <td>
-                    <a href="{{ path('app_materiel_reception', {'id': materiel.id}) }}">Reçu</a>
+                    <a href="{{ path('app_materiel_reception', {'id': materiel.id}) }}" class="btn btn-primary kl-bouton">Reçu</a>
                 </td>
                 <!-- <td>
                     <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">show</a>

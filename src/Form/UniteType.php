@@ -13,8 +13,12 @@ class UniteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('sigle')
+            ->add('nom', null, [
+                'label' => 'Nom unité',
+            ])
+            ->add('sigle', null, [
+                'label' => 'Sigle de l\'unité',
+            ])
         ;
     }
 

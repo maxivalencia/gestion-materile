@@ -230,7 +230,7 @@ class Mouvement
     */
     public function __toString(): string
     {
-        return $this->getQuantite();
+        return $this->getId();
     }
 
     public function getExpiration(): ?\DateTimeInterface

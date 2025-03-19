@@ -8,12 +8,12 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Quantite</th>
+                <!-- <th>Id</th> -->
+                <th>Quantité</th>
                 <th>Date</th>
-                <th>Reference</th>
-                <th>DebutSerie</th>
-                <th>FinSerie</th>
+                <th>Référence</th>
+                <th>Début Numéro de Série</th>
+                <th>Fin Numéro de Série</th>
                 <th>Observation</th>
                 <th>actions</th>
             </tr>
@@ -21,9 +21,9 @@
         <tbody>
         {% for mouvement in mouvements %}
             <tr>
-                <td>{{ mouvement.id }}</td>
+                <!-- <td>{{ mouvement.id }}</td> -->
                 <td>{{ mouvement.quantite }}</td>
-                <td>{{ mouvement.date ? mouvement.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mouvement.date ? mouvement.date|date('d/m/Y H:i:s') : '' }}</td>
                 <td>{{ mouvement.reference }}</td>
                 <td>{{ mouvement.debutSerie }}</td>
                 <td>{{ mouvement.finSerie }}</td>

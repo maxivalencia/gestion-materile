@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> -->
                 <th>Objet</th>
                 <th>Sujet</th>
                 <th>Date</th>
@@ -20,7 +20,7 @@
         <tbody>
         {% for historique_materiel in historique_materiels %}
             <tr>
-                <td>{{ historique_materiel.id }}</td>
+                <!-- <td>{{ historique_materiel.id }}</td> -->
                 <td>{{ historique_materiel.objet }}</td>
                 <td>{{ historique_materiel.sujet }}</td>
                 <td>{{ historique_materiel.date ? historique_materiel.date|date('d/m/Y H:i:s') : '' }}</td>

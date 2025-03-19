@@ -6,40 +6,28 @@ use App\Entity\Materiel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-class MaterielType extends AbstractType
+class ExpeditionMaterielApproType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date', DateType::class, [
-                'widget' => 'single_text', // Utilise un input de type date
-                'html5' => true,           // Active le calendrier HTML5 natif
-                'format' => 'yyyy-MM-dd',  // Format de la date (requis pour certains navigateurs)
-                'label' => 'Date',
-            ])
+            //->add('date')
             ->add('reference', null, [
-                'label' => 'Référence"',
+                'label' => 'Référence',
             ])
-            ->add('serie', null, [
-                'label' => 'Numéro de Série',
-            ])
+            //->add('serie')
             ->add('observation', null, [
                 'label' => 'Observation',
             ])
-            ->add('produit', null, [
-                'label' => 'Article',
-            ])
+            //->add('produit')
             ->add('service', null, [
                 'label' => 'Service',
             ])
             ->add('etat', null, [
                 'label' => 'Etat',
             ])
-            ->add('user', null, [
-                'label' => 'Utilisateur',
-            ])
+            //->add('user')
         ;
     }
 

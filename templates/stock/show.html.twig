@@ -8,16 +8,16 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ stock.id }}</td>
+                <!-- <th>Id</th>
+                <td>{{ stock.id }}</td> -->
             </tr>
             <tr>
-                <th>Quantite</th>
+                <th>Quantité</th>
                 <td>{{ stock.quantite }}</td>
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ stock.date ? stock.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ stock.date ? stock.date|date('d/m/Y H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>

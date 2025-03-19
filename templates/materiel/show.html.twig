@@ -7,20 +7,20 @@
 
     <table class="table">
         <tbody>
-            <tr>
+            <!-- <tr>
                 <th>Id</th>
                 <td>{{ materiel.id }}</td>
-            </tr>
+            </tr> -->
             <tr>
                 <th>Date</th>
-                <td>{{ materiel.date ? materiel.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ materiel.date ? materiel.date|date('d/m/Y H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Reference</th>
+                <th>Référence</th>
                 <td>{{ materiel.reference }}</td>
             </tr>
             <tr>
-                <th>Serie</th>
+                <th>Numéro de Série</th>
                 <td>{{ materiel.serie }}</td>
             </tr>
             <tr>

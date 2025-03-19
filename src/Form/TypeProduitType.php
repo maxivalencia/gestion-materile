@@ -13,7 +13,9 @@ class TypeProduitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type')
+            ->add('type', null, [
+                'label' => 'Type d\'article',
+            ])
         ;
     }
 

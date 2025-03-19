@@ -36,6 +36,19 @@ class ExpeditionController extends AbstractController
         ]);
     }
 
+    // fonction mampiseo ny lisitr'ireo matériel encours de reception pour l'approvisionnement
+    #[Route('/expedition/liste/approvisionnnement', name: 'app_expedition_liste_approvisionnnement')]
+    public function liste_reception(MaterielRepository $materielRepository): Response
+    {
+        $service = $this->getUser()->getService();
+        return $this->render('reception/liste.html.twig', [
+            'materiels' => $materielRepository->findBy(["service" => $service, "etat" => 6]),
+        ]);
+    }
+
+
+
+
     // fonction manao expédition matériel any amin'ny service na centre
     #[Route('/expedition/edit/{id}', name: 'app_expedition_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response

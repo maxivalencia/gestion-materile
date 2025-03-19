@@ -12,7 +12,7 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // Si l'utilisateur est déjà connecté, le rediriger
+        // Si l'utilisateur est déjà connecté, le rediriger, fa mbola tokony ovaina tableau de bord no eto
         if($this->getUser()) {
             return $this->redirectToRoute('materiel_service');
         }

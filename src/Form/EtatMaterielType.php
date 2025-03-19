@@ -17,14 +17,29 @@ class EtatMaterielType extends AbstractType
                 'widget' => 'single_text', // Utilise un input de type date
                 'html5' => true,           // Active le calendrier HTML5 natif
                 'format' => 'yyyy-MM-dd',  // Format de la date (requis pour certains navigateurs)
+                'label' => 'Date',
             ])
-            ->add('reference')
-            ->add('serie')
-            ->add('observation')
-            ->add('produit')
-            ->add('service')
-            ->add('etat')
-            ->add('user')
+            ->add('reference', null, [
+                'label' => 'Référence',
+            ])
+            ->add('serie', null, [
+                'label' => 'Numéro de Série',
+            ])
+            ->add('observation', null, [
+                'label' => 'Observation',
+            ])
+            ->add('produit', null, [
+                'label' => 'Article',
+            ])
+            ->add('service', null, [
+                'label' => 'Service',
+            ])
+            ->add('etat', null, [
+                'label' => 'Etat',
+            ])
+            ->add('user', null, [
+                'label' => 'Utilisateur',
+            ])
         ;
     }
 

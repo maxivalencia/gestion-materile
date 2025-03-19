@@ -13,13 +13,27 @@ class FournisseurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('sigle')
-            ->add('nif')
-            ->add('stat')
-            ->add('rcs')
-            ->add('mail')
-            ->add('telephone')
+            ->add('nom', null, [
+                'label' => 'Nom du Fournisseur',
+            ])
+            ->add('sigle', null, [
+                'label' => 'Sigle du Fournisseur',
+            ])
+            ->add('nif', null, [
+                'label' => 'Numéro d\'Identification Fiscale du Fournisseur',
+            ])
+            ->add('stat', null, [
+                'label' => 'Numéro Statistique du Fournisseur',
+            ])
+            ->add('rcs', null, [
+                'label' => 'Numéro de Régistre du Commerce et de Société du Fournisseur',
+            ])
+            ->add('mail', null, [
+                'label' => 'Mail du Fournisseur',
+            ])
+            ->add('telephone', null, [
+                'label' => 'Téléphone du Fournisseur',
+            ])
         ;
     }
 

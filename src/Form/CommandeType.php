@@ -14,10 +14,16 @@ class CommandeType extends AbstractType
     {
         $builder
             //->add('date')
-            ->add('reference')
+            ->add('reference', null, [
+                'label' => 'Référence',
+            ])
             //->add('serie')
-            ->add('observation')
-            ->add('produit')
+            ->add('observation', null, [
+                'label' => 'Observation',
+            ])
+            ->add('produit', null, [
+                'label' => 'Article',
+            ])
             //->add('service')
             //->add('etat')
             //->add('user')

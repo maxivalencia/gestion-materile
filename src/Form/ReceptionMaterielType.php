@@ -23,7 +23,9 @@ class ReceptionMaterielType extends AbstractType
             //->add('observation')
             //->add('produit')
             //->add('service')
-            ->add('etat')
+            ->add('etat', null, [
+                'label' => 'Etat',
+            ])
             //->add('user')
         ;
     }

@@ -13,7 +13,9 @@ class GenreProduitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('genre')
+            ->add('genre', null, [
+                'label' => 'Genre d\Article',
+            ])
         ;
     }
 

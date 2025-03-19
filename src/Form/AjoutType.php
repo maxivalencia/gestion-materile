@@ -14,10 +14,18 @@ class AjoutType extends AbstractType
     {
         $builder
             //->add('date')
-            ->add('reference')
-            ->add('serie')
-            ->add('observation')
-            ->add('produit')
+            ->add('reference', null, [
+                'label' => 'Référence',
+            ])
+            ->add('serie', null, [
+                'label' => 'Numéro de Série',
+            ])
+            ->add('observation', null, [
+                'label' => 'Observation',
+            ])
+            ->add('produit', null, [
+                'label' => 'Article',
+            ])
             //->add('service')
             //->add('etat')
             //->add('user')

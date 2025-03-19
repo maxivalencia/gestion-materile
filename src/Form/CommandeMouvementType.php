@@ -13,14 +13,24 @@ class CommandeMouvementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('produit')
-            ->add('quantite')
-            ->add('unite')
+            ->add('produit', null, [
+                'label' => 'Article',
+            ])
+            ->add('quantite', null, [
+                'label' => 'Quantité',
+            ])
+            ->add('unite', null, [
+                'label' => 'Unité',
+            ])
             //->add('date')
-            ->add('reference')
+            ->add('reference', null, [
+                'label' => 'Référence',
+            ])
             //->add('debutSerie')
             //->add('finSerie')
-            ->add('observation')
+            ->add('observation', null, [
+                'label' => 'Observation',
+            ])
             //->add('expiration')
             //->add('date_reception')
             //->add('type')

@@ -13,12 +13,20 @@ class AjoutStockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('quantite')
+            ->add('quantite', null, [
+                'label' => 'Quantité',
+            ])
             //->add('date')
             //->add('expiration')
-            ->add('produit')
-            ->add('unite')
-            ->add('service')
+            ->add('produit', null, [
+                'label' => 'Article',
+            ])
+            ->add('unite', null, [
+                'label' => 'Unité',
+            ])
+            ->add('service', null, [
+                'label' => 'Service',
+            ])
         ;
     }
 

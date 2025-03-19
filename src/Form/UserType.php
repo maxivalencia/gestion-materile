@@ -30,7 +30,9 @@ class UserType extends AbstractType
             'Administrateur principale' => 'ROLE_SUPER_ADMIN',
         ];
         $builder
-            ->add('username')
+            ->add('username', null, [
+                'label' => 'Nom d\'utilisateur',
+            ])
             /* ->add('roles', ChoiceType::class, [
                 'label' => 'Rôle',
                 'choices' => $roles,
@@ -45,6 +47,7 @@ class UserType extends AbstractType
                 'expanded' => false,
                 'data' => true,
                 'mapped' => false,
+                'label' => 'Rôles',
             ])
             ->add('password', RepeatedType::class,[
                 'label' => 'Mot de passe',
@@ -55,10 +58,18 @@ class UserType extends AbstractType
                 'first_options' => ['label' => 'Veuillez entrer le mot de passe'],
                 'second_options' => ['label' => 'Veuillez repeter le mot de passe'],
             ])
-            ->add('nom')
-            ->add('telephone')
-            ->add('mail')
-            ->add('service')
+            ->add('nom', null, [
+                'label' => 'Nom et prénom',
+            ])
+            ->add('telephone', null, [
+                'label' => 'Téléphone',
+            ])
+            ->add('mail', null, [
+                'label' => 'Mail',
+            ])
+            ->add('service', null, [
+                'label' => 'Service',
+            ])
         ;
     }
 

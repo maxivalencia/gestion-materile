@@ -7,28 +7,28 @@
 
     <table class="table">
         <tbody>
-            <tr>
+            <!-- <tr>
                 <th>Id</th>
                 <td>{{ mouvement.id }}</td>
-            </tr>
+            </tr> -->
             <tr>
-                <th>Quantite</th>
+                <th>Quantité</th>
                 <td>{{ mouvement.quantite }}</td>
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ mouvement.date ? mouvement.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mouvement.date ? mouvement.date|date('d/m/Y H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Reference</th>
+                <th>Référence</th>
                 <td>{{ mouvement.reference }}</td>
             </tr>
             <tr>
-                <th>DebutSerie</th>
+                <th>Début Numéro de Série</th>
                 <td>{{ mouvement.debutSerie }}</td>
             </tr>
             <tr>
-                <th>FinSerie</th>
+                <th>Fin Numéro de Série</th>
                 <td>{{ mouvement.finSerie }}</td>
             </tr>
             <tr>

@@ -13,18 +13,31 @@ class AjoutMouvementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('produit')
-            ->add('quantite')
-            ->add('unite')
+            ->add('produit', null, [
+                'label' => 'Article',
+            ])
+            ->add('quantite', null, [
+                'label' => 'Quantité',
+            ])
+            ->add('unite', null, [
+                'label' => 'Unité',
+            ])
             //->add('date')
-            ->add('reference')
-            ->add('debutSerie')
-            ->add('finSerie')
+            ->add('reference', null, [
+                'label' => 'Référence',
+            ])
+            ->add('debutSerie', null, [
+                'label' => 'Début du Numéro de Série',
+            ])
+            ->add('finSerie', null, [
+                'label' => 'Fin du Numéro de Série',
+            ])
             ->add('expiration', DateType::class, [
                 'widget' => 'single_text', // Utilise un input de type date
                 'html5' => true,           // Active le calendrier HTML5 natif
                 'format' => 'yyyy-MM-dd',  // Format de la date (requis pour certains navigateurs)
                 'required' => false,
+                'label' => 'Date d\'expiration',
             ])
             //->add('date_reception')
             //->add('type')
@@ -33,7 +46,9 @@ class AjoutMouvementType extends AbstractType
             //->add('fournisseur')
             //->add('expedition_id')
             //->add('user_reception')
-            ->add('observation')
+            ->add('observation', null, [
+                'label' => 'Observation',
+            ])
         ;
     }
 

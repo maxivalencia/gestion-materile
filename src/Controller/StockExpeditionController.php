@@ -12,6 +12,7 @@ use App\Repository\MaterielRepository;
 use App\Repository\MouvementRepository;
 use App\Repository\TypeMouvementRepository;
 use App\Repository\EtatRepository;
+use App\Form\ExpeditionArticleType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,7 +46,7 @@ class StockExpeditionController extends AbstractController
     {
         // fonction manao expedition entana amin'ny destinataire no eto
         $mouvement = new Mouvement();
-        $form = $this->createForm(AjoutMouvementType::class, $mouvement);
+        $form = $this->createForm(ExpeditionArticleType::class, $mouvement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

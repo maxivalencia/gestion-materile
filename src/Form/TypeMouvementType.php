@@ -13,8 +13,12 @@ class TypeMouvementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type')
-            ->add('sens')
+            ->add('type', null, [
+                'label' => 'Type de mouvement',
+            ])
+            ->add('sens', null, [
+                'label' => 'Sens du mouvement',
+            ])
         ;
     }
 

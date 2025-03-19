@@ -13,20 +13,30 @@ class StockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('quantite')
+            ->add('quantite', null, [
+                'label' => 'Quantité',
+            ])
             ->add('date', DateType::class, [
                 'widget' => 'single_text', // Utilise un input de type date
                 'html5' => true,           // Active le calendrier HTML5 natif
                 'format' => 'yyyy-MM-dd',  // Format de la date (requis pour certains navigateurs)
+                'label' => 'Date',
             ])
-            ->add('produit')
-            ->add('unite')
-            ->add('service')
+            ->add('produit', null, [
+                'label' => 'Article',
+            ])
+            ->add('unite', null, [
+                'label' => 'Unité',
+            ])
+            ->add('service', null, [
+                'label' => 'Service',
+            ])
             ->add('expiration', DateType::class, [
                 'widget' => 'single_text', // Utilise un input de type date
                 'html5' => true,           // Active le calendrier HTML5 natif
                 'format' => 'yyyy-MM-dd',  // Format de la date (requis pour certains navigateurs)
                 'required' => false,
+                'label' => 'Date d\'expiration',
             ])
         ;
     }

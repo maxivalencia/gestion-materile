@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> -->
                 <th>Genre</th>
                 <th>actions</th>
             </tr>
@@ -16,7 +16,7 @@
         <tbody>
         {% for genre_produit in genre_produits %}
             <tr>
-                <td>{{ genre_produit.id }}</td>
+                <!-- <td>{{ genre_produit.id }}</td> -->
                 <td>{{ genre_produit.genre }}</td>
                 <td>
                     <a href="{{ path('app_genre_produit_show', {'id': genre_produit.id}) }}" class="btn btn-success"><i class="fa fa-book" aria-hidden="true"></i></a>

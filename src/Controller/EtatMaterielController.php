@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Materiel;
 use App\Entity\Etat;
+use App\Entity\Service;
 use App\Entity\HistoriqueMateriel;
 use App\Form\MaterielType;
 use App\Form\EtatMaterielType;
 use App\Repository\MaterielRepository;
 use App\Repository\EtatRepository;
+use App\Repository\ServiceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,26 +69,31 @@ class EtatMaterielController extends AbstractController
 
     // liste des matériels ao amin'ny service iray na centre iray sady afaka manova ny état
     #[Route('/etat/materiel/liste/approvisionnement', name: 'app_etat_materiel_liste_approvisionnement')]
-    public function liste_approvisionnement(Request $request, MaterielRepository $materielRepository, EtatRepository $etatRepository, EntityManagerInterface $entityManager): Response
+    public function liste_approvisionnement(Request $request, ServiceRepository $serviceRepository, MaterielRepository $materielRepository, EtatRepository $etatRepository, EntityManagerInterface $entityManager): Response
     {
         // vardump($this->getUser());
         //$service = $this->getUser()->getService();
         //$materiel = $materielRepository->findBy(["service" => $service]);
         $etat_id = $request->request->get('etat_id');
+        $service_id = $request->request->get('service_id');
         $materiel_id = $request->request->get('materiel_id');
-        if ($etat_id) {
+        if ($etat_id && $service_id) {
             // Changer l'état du materiel et sauvegarder dans la base de données
             $mat = $materielRepository->findOneBy(['id' => $materiel_id]);
             $etat = $etatRepository->findOneBy(['id' => $etat_id]);
+            $service = $serviceRepository->findOneBy(['id' => $service_id]);
             $mat->setEtat($etat);
+            $mat->setSerie($service);
             $entityManager->persist($mat);  // Il faut persister les changements
             $entityManager->flush();  // Sauvegarder les changements dans la base de données
         }
         $etats = $etatRepository->findAll();
-        $ne_pas_en_possession = [5, 6];
-        $materiels = $materielRepository->findByMaterielEnPossession($ne_pas_en_possession, $this->getUser()->getService()->getId());
-        return $this->render('etat_materiel/liste.html.twig', [
+        $ne_pas_en_possession = [1];
+        $materiels = $materielRepository->findByMaterielEnStock($ne_pas_en_possession, $this->getUser()->getService()->getId());
+        $service = $serviceRepository->findAll();
+        return $this->render('etat_materiel/liste_gestionnaire.html.twig', [
             'materiels' => $materiels,
+            'services' => $service,
             'etats' => $etats,
             //'materiels' => $materielRepository->findAll(),
         ]);
