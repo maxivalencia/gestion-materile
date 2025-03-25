@@ -16,9 +16,9 @@ class ConsommationArticleType extends AbstractType
                 'label' => 'Quantité',
             ])
             //->add('date')
-            ->add('reference', null, [
+            /* ->add('reference', null, [
                 'label' => 'Référence',
-            ])
+            ]) */
             ->add('debutSerie', null, [
                 'label' => 'Début du Numéro de Série',
             ])

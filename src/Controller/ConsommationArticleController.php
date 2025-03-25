@@ -40,7 +40,7 @@ class ConsommationArticleController extends AbstractController
     public function stock_consommaton_article(Request $request, StockRepository $stockRepository, ConversionRepository $conversionRepository, EntityManagerInterface $entityManager, TypeMouvementRepository $typeMouvementRepository, EtatRepository $etatRepository): Response
     {
         $mouvement = new Mouvement();
-        $form = $this->createForm(FournisseurMouvementType::class, $mouvement);
+        $form = $this->createForm(ConsommationArticleType::class, $mouvement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -66,7 +66,7 @@ class ConsommationArticleController extends AbstractController
             if($stock == null){
                 $stock = new Stock();
                 $stock->setProduit($mouvement->getProduit());
-                $stock->setQuantite($quantite);
+                $stock->setQuantite($stock->getQuantite() - $quantite);
                 $stock->setUnite($unite);
                 // $stock->setService($mouvement->getService());
                 $stock->setService($this->getUser()->getService());
