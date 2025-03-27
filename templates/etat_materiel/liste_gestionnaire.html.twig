@@ -33,12 +33,12 @@
                 <td>
                     <form action="{{ path('app_etat_materiel_liste') }}" method="POST">
                         <input type="hidden" value="{{ materiel.id }}" name="materiel_id" id="materiel_id">
-                        <select name="etat_id" id="etat_id">
+                        <select name="etat_id">
                             {% for etat in etats %}
                                 <option value="{{ etat.id }}" {% if etat.id == materiel.etat.id %} selected="selected"{% endif %}>{{ etat.etat }}</option>
                             {% endfor %}
                         </select>
-                        <select name="service_id" id="service_id">
+                        <select name="service_id">
                             {% for service in services %}
                                 <option value="{{ service.id }}" {% if service.id == materiel.service.id %} selected="selected"{% endif %}>{{ service.sigle }}</option>
                             {% endfor %}

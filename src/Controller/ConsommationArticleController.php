@@ -66,13 +66,13 @@ class ConsommationArticleController extends AbstractController
             if($stock == null){
                 $stock = new Stock();
                 $stock->setProduit($mouvement->getProduit());
-                $stock->setQuantite($stock->getQuantite() - $quantite);
+                $stock->setQuantite($quantite);
                 $stock->setUnite($unite);
                 // $stock->setService($mouvement->getService());
                 $stock->setService($this->getUser()->getService());
                 $stock->setDate(new DateTime());
             } else {
-                $stock->setQuantite($stock->getQuantite() + $quantite);
+                $stock->setQuantite($stock->getQuantite() - $quantite);
                 $stock->setDate(new DateTime());
             }
             $entityManager->persist($stock);
